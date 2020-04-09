@@ -33,9 +33,9 @@ function serialize(ctx) {
     };
 }
 function serializeEntity(entity, transformer, options, includedByType) {
-    const attributes = Object.assign({}, transformer.transform(entity, options));
+    let attributes = Object.assign({}, transformer.transform(entity, options));
     const idKey = options.idKey || 'id';
-    const id = attributes[idKey];
+    const id = attributes[idKey] || entity[idKey];
     if (!id) {
         throw new JsonApiError_1.default('Resource without id');
     }
@@ -48,6 +48,12 @@ function serializeEntity(entity, transformer, options, includedByType) {
                 ? ctx.input.map((e) => serializeRelation(e, ctx.transformer, options, ctx.included, includedByType))
                 : serializeRelation(ctx.input, ctx.transformer, options, ctx.included, includedByType)
         };
+    }
+    if (options.fields && options.fields[transformer.type]) {
+        const allowed = typeof (options.fields[transformer.type]) === 'string'
+            ? options.fields[transformer.type].split(',')
+            : options.fields[transformer.type].split(',');
+        attributes = whitelist(attributes, allowed);
     }
     const data = {
         id,
