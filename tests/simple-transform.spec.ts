@@ -37,7 +37,25 @@ describe('transform', () => {
           firstName: "Joe",
           lastName: "Doe"
         }
-      }
+      },
+      included: []
+    });
+
+    const entitySerializedWithFields = transform()
+      .withInput(entity)
+      .withTransformer(new EntityTransformer)
+      .withOptions({ fields: { users: 'firstName' } })
+      .serialize();
+
+    expect(entitySerializedWithFields).toEqual({
+      data: {
+        type: "users",
+        id: 1,
+        attributes: {
+          firstName: "Joe"
+        }
+      },
+      included: []
     });
 
     const collectionSerialized = transform()
@@ -53,7 +71,8 @@ describe('transform', () => {
           firstName: "Joe",
           lastName: "Doe"
         }
-      }]
+      }],
+      included: []
     });
   })
 });

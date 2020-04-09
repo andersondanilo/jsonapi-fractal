@@ -1,3 +1,4 @@
 export default interface Options {
-  idKey?: string
+  idKey?: string,
+  fields: any
 }
