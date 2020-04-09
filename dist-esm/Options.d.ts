@@ -1,4 +1,5 @@
 export default interface Options {
     idKey?: string;
-    fields: any;
+    fields?: any;
+    changeCase?: string;
 }
