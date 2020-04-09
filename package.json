@@ -1,13 +1,14 @@
 {
   "name": "jsonapi-fractal",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "JSON:API Serializer inspired by Fractal (PHP)",
   "license": "MIT",
   "main": "dist/index.js",
+  "module": "dist-esm/index.js", 
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "tsc",
+    "build": "tsc && tsc -m es6 --outDir dist-esm",
     "lint": "tslint src/**/*.ts tests/*.ts"
   },
   "jest": {
