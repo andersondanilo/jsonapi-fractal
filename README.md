@@ -3,7 +3,7 @@ JSON:API Serializer inspired by Fractal (PHP)
 
 ## Simple Serialize
 ```js
-import { serialize } from 'json-api-fractal'
+import { serialize } from 'jsonapi-fractal'
 
 const entity = {
   id: 1,
@@ -32,7 +32,7 @@ const entity = deserialize(serializedData, { changeCase: 'camelCase' })
 ```
 ## Serialize with transformers
 ```js
-import { Transformer, DefaultTransformer, transform } from 'jsonapi-transformer'
+import { Transformer, DefaultTransformer, transform } from 'jsonapi-fractal'
 
 class UserTransformer extends Transformer {
   constructor() {
