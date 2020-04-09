@@ -4,11 +4,13 @@
   "description": "JSON:API Serializer inspired by Fractal (PHP)",
   "license": "MIT",
   "main": "dist/index",
-  "module": "./dist-esm/index.js", 
   "types": "./dist/index.d.ts",
+  "module": "./dist-esm/index.js", 
   "exports": {
-    "import": "./dist-esm/index.js",
-    "default": "./dist/index.js"
+    ".": {
+      "require": "./dist/index.js",
+      "default": "./dist-esm/index.js"
+    }
   },
   "scripts": {
     "test": "jest",

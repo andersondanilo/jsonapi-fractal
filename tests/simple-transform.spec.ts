@@ -1,78 +1,47 @@
-import { transform, Transformer } from '../src/index'
-
-interface User {
-  id: number,
-  firstName: string,
-  lastName: string
-}
-
-class EntityTransformer extends Transformer {
-  type = 'users';
-
-  transform (user: User) {
-    return user;
-  }
-}
+import { serialize } from '../src/index'
 
 describe('transform', () => {
   it('Do simple transformation', () => {
-    const entity: User = {
+    const entity = {
       id: 1,
       firstName: "Joe",
-      lastName: "Doe"
+      lastName: "Doe",
+      address: {
+        id: 1
+      },
+      images: [
+        { id: 1 },
+        { id: 2 }
+      ]
     };
 
-    const collection = [entity];
+    const serialized = serialize(entity, 'users', {
+      relationships: ['address', 'images']
+    });
 
-    const entitySerialized = transform()
-      .withInput(entity)
-      .withTransformer(new EntityTransformer)
-      .serialize();
-
-    expect(entitySerialized).toEqual({
+    expect(serialized).toEqual({
       data: {
         type: "users",
         id: 1,
         attributes: {
-          firstName: "Joe",
-          lastName: "Doe"
+          firstName: 'Joe',
+          lastName: 'Doe'
+        },
+        relationships: {
+          address: {
+            data: {
+              type: 'address',
+              id: 1
+            }
+          },
+          images: {
+            data: [
+              { type: 'images', id: 1 },
+              { type: 'images', id: 2 }
+            ]
+          }
         }
-      },
-      included: []
-    });
-
-    const entitySerializedWithFields = transform()
-      .withInput(entity)
-      .withTransformer(new EntityTransformer)
-      .withOptions({ fields: { users: 'firstName' } })
-      .serialize();
-
-    expect(entitySerializedWithFields).toEqual({
-      data: {
-        type: "users",
-        id: 1,
-        attributes: {
-          firstName: "Joe"
-        }
-      },
-      included: []
-    });
-
-    const collectionSerialized = transform()
-      .withInput(collection)
-      .withTransformer(new EntityTransformer)
-      .serialize();
-
-    expect(collectionSerialized).toEqual({
-      data: [{
-        type: "users",
-        id: 1,
-        attributes: {
-          firstName: "Joe",
-          lastName: "Doe"
-        }
-      }],
-      included: []
-    });
+      }
+    })
   })
 });

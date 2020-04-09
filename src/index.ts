@@ -3,12 +3,21 @@ import Options from './Options'
 import Context from './Context'
 import JsonApiError from './errors/JsonApiError'
 import DefaultTransformer from './DefaultTransformer'
+import deserialize from './deserializer'
 
 export function transform () {
-  return new Context(serialize);
+  return new Context(serializeContext);
 }
 
-function serialize (ctx: Context) {
+export function serialize (data, type, options) {
+  return transform()
+    .withInput(data)
+    .withTransformer(new DefaultTransformer(type, options.relationships || []))
+    .withOptions(options)
+    .serialize()
+}
+
+function serializeContext (ctx: Context) {
   if (!ctx.options) {
     ctx.options = {};
   }
@@ -31,10 +40,13 @@ function serialize (ctx: Context) {
     }
   }
 
-  return {
-    data,
-    included
+  const result: any = { data }
+
+  if (included.length > 0) {
+    result.included = included
   }
+
+  return result
 }
 
 function serializeEntity (entity, transformer: Transformer, options: Options, includedByType) {
@@ -125,4 +137,4 @@ export function whitelist (obj, list) {
   return result
 }
 
-export { Transformer, DefaultTransformer }
+export { Transformer, DefaultTransformer, deserialize }
