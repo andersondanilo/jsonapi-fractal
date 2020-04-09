@@ -8,8 +8,8 @@ describe('deserialize', () => {
           type: 'users',
           id: 1,
           attributes: {
-            firstName: 'Joe',
-            lastName: 'Doe'
+            'first-name': 'Joe',
+            'last-name': 'Doe'
           },
           relationships: {
             address: {
@@ -38,7 +38,7 @@ describe('deserialize', () => {
       ]
     }
 
-    expect(deserialize(serialized)).toEqual([
+    expect(deserialize(serialized, { changeCase: 'camelCase' })).toEqual([
       {
         id: 1,
         firstName: 'Joe',

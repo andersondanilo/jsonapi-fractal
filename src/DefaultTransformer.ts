@@ -1,6 +1,5 @@
 import Transformer from './Transformer'
 import Options from './Options'
-import { transform } from './index'
 
 export default class DefaultTransformer extends Transformer {
   type: string = 'entities';
@@ -12,10 +11,11 @@ export default class DefaultTransformer extends Transformer {
 
     for (const rel of this.relationships) {
       this[rel] = (entity) => {
-        return transform()
-          .withInput(entity[rel])
-          .withTransformer(new DefaultTransformer(rel))
-          .withIncluded(false)
+        return {
+          input: entity[rel],
+          transformer: new DefaultTransformer(rel),
+          included: false
+        }
       }
     }
   }

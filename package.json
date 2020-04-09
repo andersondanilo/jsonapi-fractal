@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "dist/index",
   "types": "./dist/index.d.ts",
-  "module": "./dist-esm/index.js", 
+  "module": "./dist-esm/index.js",
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -42,12 +42,15 @@
     "url": "git+https://github.com/andersondanilo/jsonapi-fractal.git"
   },
   "keywords": [
-      "json api",
-      "serializer"
+    "json api",
+    "serializer"
   ],
   "author": "Anderson Danilo",
   "homepage": "https://github.com/andersondanilo/jsonapi-fractal#readme",
   "bugs": {
     "url": "https://github.com/andersondanilo/jsonapi-fractal/issues"
+  },
+  "dependencies": {
+    "change-case": "^4.1.1"
   }
 }

@@ -16,7 +16,8 @@ describe('transform', () => {
     };
 
     const serialized = serialize(entity, 'users', {
-      relationships: ['address', 'images']
+      relationships: ['address', 'images'],
+      changeCase: 'kebabCase'
     });
 
     expect(serialized).toEqual({
@@ -24,8 +25,8 @@ describe('transform', () => {
         type: "users",
         id: 1,
         attributes: {
-          firstName: 'Joe',
-          lastName: 'Doe'
+          'first-name': 'Joe',
+          'last-name': 'Doe'
         },
         relationships: {
           address: {

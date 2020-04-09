@@ -1,22 +1,24 @@
-export default function deserialize (response) {
+import { changeCase } from './utils'
+
+export default function deserialize (response, options = {}) {
+  if (!options) {
+    options = {}
+  }
+
   const included = response.included || []
 
   if (Array.isArray(response.data)) {
     return response.data.map((data) => {
-      return parseJsonApiSimpleResourceData(data, included, false)
+      return parseJsonApiSimpleResourceData(data, included, false, options)
     })
   } else {
-    return parseJsonApiSimpleResourceData(response.data, included)
+    return parseJsonApiSimpleResourceData(response.data, included, false, options)
   }
 }
 
-function parseJsonApiSimpleResourceData (data, included, useCache = false) {
+function parseJsonApiSimpleResourceData (data, included, useCache, options) {
   if (!included.cached) {
     included.cached = {}
-  }
-
-  if (typeof (useCache) === 'undefined') {
-    useCache = true
   }
 
   if (!(data.type in included.cached)) {
@@ -27,7 +29,13 @@ function parseJsonApiSimpleResourceData (data, included, useCache = false) {
     return included.cached[data.type][data.id]
   }
 
-  const resource = data.attributes
+  let attributes = data.attributes
+
+  if (options.changeCase) {
+    attributes = changeCase(attributes, options.changeCase)
+  }
+
+  const resource = attributes
   resource.id = data.id
 
   included.cached[data.type][data.id] = resource
@@ -43,7 +51,8 @@ function parseJsonApiSimpleResourceData (data, included, useCache = false) {
           const item = findJsonApiIncluded(
             included,
             relationData.type,
-            relationData.id
+            relationData.id,
+            options
           )
 
           items.push(item)
@@ -54,7 +63,8 @@ function parseJsonApiSimpleResourceData (data, included, useCache = false) {
         resource[relationName] = findJsonApiIncluded(
           included,
           relationRef.data.type,
-          relationRef.data.id
+          relationRef.data.id,
+          options
         )
       } else {
         resource[relationName] = null
@@ -65,12 +75,12 @@ function parseJsonApiSimpleResourceData (data, included, useCache = false) {
   return resource
 }
 
-function findJsonApiIncluded (included, type, id) {
+function findJsonApiIncluded (included, type, id, options) {
   let found = null
 
   included.forEach((item, index) => {
     if (item.type === type && item.id === id) {
-      found = parseJsonApiSimpleResourceData(item, included)
+      found = parseJsonApiSimpleResourceData(item, included, true, options)
     }
   })
 
