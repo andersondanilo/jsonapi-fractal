@@ -3,14 +3,13 @@ import { serialize } from '../src/index'
 describe('transform', () => {
   it('Do simple transformation', () => {
     const entity = {
-      id: 1,
       firstName: "Joe",
       lastName: "Doe",
       address: {
         id: 1
       },
       images: [
-        { id: 1 },
+        1,
         { id: 2 }
       ]
     };
@@ -23,7 +22,6 @@ describe('transform', () => {
     expect(serialized).toEqual({
       data: {
         type: "users",
-        id: 1,
         attributes: {
           'first-name': 'Joe',
           'last-name': 'Doe'

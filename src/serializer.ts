@@ -10,6 +10,10 @@ export function transform () {
 }
 
 export function serialize (data, type, options) {
+  if (!options) {
+    options = {}
+  }
+
   return transform()
     .withInput(data)
     .withTransformer(new DefaultTransformer(type, options.relationships || []))
@@ -54,10 +58,6 @@ function serializeEntity (entity, transformer: Transformer, options: Options, in
   const idKey = options.idKey || 'id';
   const id = attributes[idKey] || entity[idKey];
 
-  if (!id) {
-    throw new JsonApiError('Resource without id')
-  }
-
   delete attributes[idKey];
 
   const relationships = {};
@@ -91,6 +91,10 @@ function serializeEntity (entity, transformer: Transformer, options: Options, in
     relationships
   };
 
+  if (typeof(data.id) === 'undefined' || data.id === null) {
+    delete data[id]
+  }
+
   if (Object.keys(data.relationships).length === 0) {
     delete data.relationships
   }
@@ -104,7 +108,11 @@ function serializeRelation (entity, transformer: Transformer, options: Options, 
   }
 
   const idKey = options.idKey || 'id';
-  const id = entity[idKey];
+  let id = entity[idKey];
+
+  if (!id && entity) {
+    id = entity
+  }
 
   if (!id) {
     throw new JsonApiError('Resource without id')
