@@ -1,12 +1,13 @@
 import Tranformer from './Transformer'
 import Options from './Options'
+import JsonApiResponse from './JsonApiResponse'
 
 export default class Context {
   input: any = null;
   transformer: Tranformer = null;
   included: boolean = false;
   options: any = null;
-  render: (b) => null;
+  render: (c: Context) => JsonApiResponse;
 
   constructor (render) {
     this.render = render;
@@ -36,7 +37,7 @@ export default class Context {
     return this;
   }
 
-  serialize () {
+  serialize (): JsonApiResponse {
     return this.render(this);
   }
 }
