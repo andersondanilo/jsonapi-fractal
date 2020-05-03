@@ -4,12 +4,13 @@ import Transformer from './Transformer'
 import JsonApiError from './errors/JsonApiError'
 import Options from './Options'
 import { whitelist, changeCase } from './utils'
+import JsonApiResponse from './JsonApiResponse'
 
-export function transform () {
+export function transform (): Context {
   return new Context(serializeContext);
 }
 
-export function serialize (data, type, options) {
+export function serialize (data, type, options): JsonApiResponse {
   if (!options) {
     options = {}
   }
@@ -21,7 +22,7 @@ export function serialize (data, type, options) {
     .serialize()
 }
 
-export function serializeContext (ctx: Context) {
+export function serializeContext (ctx: Context): JsonApiResponse {
   if (!ctx.options) {
     ctx.options = {};
   }
@@ -53,7 +54,7 @@ export function serializeContext (ctx: Context) {
   return result
 }
 
-function serializeEntity (entity, transformer: Transformer, options: Options, includedByType) {
+function serializeEntity (entity, transformer: Transformer, options: Options, includedByType): any {
   let attributes = { ...transformer.transform(entity, options) };
   const idKey = options.idKey || 'id';
   const id = attributes[idKey] || entity[idKey];
@@ -102,7 +103,7 @@ function serializeEntity (entity, transformer: Transformer, options: Options, in
   return data
 }
 
-function serializeRelation (entity, transformer: Transformer, options: Options, included: boolean, includedByType) {
+function serializeRelation (entity, transformer: Transformer, options: Options, included: boolean, includedByType) : any {
   if (!entity) {
     return null;
   }

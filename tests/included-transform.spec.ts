@@ -90,7 +90,7 @@ describe('transform', () => {
 
     const entitySerialized = transform()
       .withInput(entity)
-      .withTransformer(new UserTransformer)
+      .withTransformer(new UserTransformer())
       .withOptions({ idKey: '_id' })
       .serialize();
 
