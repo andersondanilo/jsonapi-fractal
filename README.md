@@ -1,3 +1,6 @@
+#FORK 
+ORIGINAL - https://github.com/andersondanilo/jsonapi-fractal
+
 # jsonapi-fractal
 JSON:API Serializer inspired by Fractal (PHP)
 

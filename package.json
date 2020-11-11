@@ -1,7 +1,7 @@
 {
   "name": "@r0mm4k/jsonapi-fractal",
   "version": "1.0.18",
-  "description": "JSON:API Serializer inspired by Fractal (PHP)",
+  "description": "FORK - JSON:API Serializer inspired by Fractal (PHP)",
   "license": "MIT",
   "main": "dist/index",
   "types": "./dist/index.d.ts",
