@@ -127,7 +127,6 @@ describe('transform', () => {
         {
           id: 2,
           type: 'orders',
-          attributes: {},
           relationships: {
             product: {
               data: {
