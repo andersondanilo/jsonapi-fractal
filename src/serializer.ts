@@ -100,6 +100,10 @@ function serializeEntity (entity, transformer: Transformer, options: Options, in
     delete data.relationships
   }
 
+  if (Object.keys(data.attributes).length === 0) {
+    delete data.attributes
+  }
+
   return data
 }
 
