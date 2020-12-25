@@ -1,5 +1,6 @@
 export default interface Options {
-  idKey?: string,
+  idInKey?: string,
+  idOutKey?: string,
   fields?: any,
   changeCase?: string,
 

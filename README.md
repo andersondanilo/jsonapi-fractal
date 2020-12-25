@@ -65,6 +65,6 @@ const user = {
 const serialized = transform()
   .withInput(user)
   .withTransformer(new UserTransformer)
-  .withOptions({ idKey: '_id' })
+  .withOptions({ idInKey: '_id' })
   .serialize()
 ```

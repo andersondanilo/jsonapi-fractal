@@ -33,6 +33,7 @@ class OrderTransformer extends Transformer {
     return transform()
       .withInput(order.product)
       .withTransformer(new DefaultTransformer('products'))
+      .withOptions({ idOutKey: 'lid' })
       .withIncluded(true)
   }
 }
@@ -91,7 +92,7 @@ describe('transform', () => {
     const entitySerialized = transform()
       .withInput(entity)
       .withTransformer(new UserTransformer())
-      .withOptions({ idKey: '_id' })
+      .withOptions({ idInKey: '_id' })
       .serialize();
 
     expect(entitySerialized).toEqual({
@@ -130,14 +131,14 @@ describe('transform', () => {
           relationships: {
             product: {
               data: {
-                id: 1,
+                lid: 1,
                 type: 'products'
               }
             }
           }
         },
         {
-          id: 1,
+          lid: 1,
           type: 'products',
           attributes: {
             name: 'My product'
