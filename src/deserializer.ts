@@ -29,7 +29,7 @@ function parseJsonApiSimpleResourceData (data, included, useCache, options) {
     return included.cached[data.type][data.id]
   }
 
-  let attributes = data.attributes
+  let attributes = data.attributes || {}
 
   if (options.changeCase) {
     attributes = changeCase(attributes, options.changeCase)

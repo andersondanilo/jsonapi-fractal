@@ -54,4 +54,42 @@ describe('deserialize', () => {
       }
     ])
   })
+
+  it('Deserialize data without attributes', () => {
+    const serialized = {
+      data: [
+        {
+          type: 'users',
+          id: 1,
+          relationships: {
+            address: {
+              data: {
+                type: 'addr',
+                id: 1
+              }
+            }
+          }
+        }
+      ],
+      included: [
+        {
+          type: 'addr',
+          id: 1,
+          attributes: {
+            street: 'Street 1'
+          }
+        }
+      ]
+    }
+
+    expect(deserialize(serialized)).toEqual([
+      {
+        id: 1,
+        address: {
+          id: 1,
+          street: 'Street 1'
+        }
+      }
+    ])
+  })
 });
