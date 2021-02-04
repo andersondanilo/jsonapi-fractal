@@ -56,20 +56,22 @@ export function serializeContext (ctx: Context): JsonApiResponse {
 
 function serializeEntity (entity, transformer: Transformer, options: Options, includedByType): any {
   let attributes = { ...transformer.transform(entity, options) };
-  const idKey = options.idKey || 'id';
-  const id = attributes[idKey] || entity[idKey];
+  const idInKey = options.idInKey || 'id';
+  const idOutKey = options.idOutKey || 'id';
+  const id = attributes[idInKey] || entity[idInKey];
 
-  delete attributes[idKey];
+  delete attributes[idInKey];
 
   const relationships = {};
 
   for (const relation of transformer.relationships) {
     const ctx = transformer[relation](entity, options);
+    const extOptions = {...options, ...(ctx.options && { ...ctx.options })};
 
     relationships[relation] = {
       data: Array.isArray(ctx.input)
-        ? ctx.input.map((e) => serializeRelation(e, ctx.transformer, options, ctx.included, includedByType))
-        : serializeRelation(ctx.input, ctx.transformer, options, ctx.included, includedByType)
+        ? ctx.input.map((e) => serializeRelation(e, ctx.transformer, extOptions, ctx.included, includedByType))
+        : serializeRelation(ctx.input, ctx.transformer, extOptions, ctx.included, includedByType)
     }
   }
 
@@ -86,14 +88,14 @@ function serializeEntity (entity, transformer: Transformer, options: Options, in
   }
 
   const data = {
-    id,
+    [idOutKey]: id,
     type: transformer.type,
     attributes,
     relationships
   };
 
-  if (typeof(data.id) === 'undefined' || data.id === null) {
-    delete data[id]
+  if (typeof(data[idOutKey]) === 'undefined' || data[idOutKey] === null) {
+    delete data[idOutKey]
   }
 
   if (Object.keys(data.relationships).length === 0) {
@@ -112,8 +114,9 @@ function serializeRelation (entity, transformer: Transformer, options: Options, 
     return null;
   }
 
-  const idKey = options.idKey || 'id';
-  let id = entity[idKey];
+  const idInKey = options.idInKey || 'id';
+  const idOutKey = options.idOutKey || 'id';
+  let id = entity[idInKey];
 
   if (!id && entity) {
     id = entity
@@ -140,6 +143,6 @@ function serializeRelation (entity, transformer: Transformer, options: Options, 
 
   return {
     type: transformer.type,
-    id
+    [idOutKey]: id
   }
 }
