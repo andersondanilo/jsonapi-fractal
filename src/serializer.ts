@@ -82,7 +82,7 @@ function serializeEntity (entity, transformer: Transformer, options: Options, in
   }
 
   if (options.changeCase) {
-    attributes = changeCase(attributes, options.changeCase)
+    attributes = changeCase(attributes, options.changeCase, options.deep)
   }
 
   const data = {

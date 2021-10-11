@@ -9,7 +9,12 @@ describe('deserialize', () => {
           id: 1,
           attributes: {
             'first-name': 'Joe',
-            'last-name': 'Doe'
+            'last-name': 'Doe',
+            'birthday': {
+              'day-of-birth': 1,
+              'month-of-birth': 1,
+              'year-of-birth': 1970
+            }
           },
           relationships: {
             address: {
@@ -38,11 +43,16 @@ describe('deserialize', () => {
       ]
     }
 
-    expect(deserialize(serialized, { changeCase: 'camelCase' })).toEqual([
+    expect(deserialize(serialized, { changeCase: 'camelCase', deep: true })).toEqual([
       {
         id: 1,
         firstName: 'Joe',
         lastName: 'Doe',
+        birthday: {
+          dayOfBirth: 1,
+          monthOfBirth: 1,
+          yearOfBirth: 1970
+        },
         address: {
           id: 1,
           street: 'Street 1'

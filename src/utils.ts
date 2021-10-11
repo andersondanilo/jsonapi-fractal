@@ -1,6 +1,6 @@
 import { camelCase, snakeCase, paramCase } from 'change-case'
 
-export function changeCase (attributes, caseType) {
+export function changeCase (attributes, caseType, deep = false) {
   const caseTypes = {
     camelCase,
     snakeCase,
@@ -17,7 +17,14 @@ export function changeCase (attributes, caseType) {
   const newAttributes = {}
 
   for (const key of Object.keys(attributes)) {
-    newAttributes[caseFn(key)] = attributes[key]
+    if (
+      deep &&
+      Object.prototype.toString.call(attributes[key]) === '[object Object]'
+    ) {
+      newAttributes[caseFn(key)] = changeCase(attributes[key], caseType, deep)
+    } else {
+      newAttributes[caseFn(key)] = attributes[key]
+    }
   }
 
   return newAttributes

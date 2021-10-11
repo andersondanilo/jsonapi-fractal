@@ -32,7 +32,7 @@ function parseJsonApiSimpleResourceData (data, included, useCache, options) {
   let attributes = data.attributes || {}
 
   if (options.changeCase) {
-    attributes = changeCase(attributes, options.changeCase)
+    attributes = changeCase(attributes, options.changeCase, options.deep)
   }
 
   const resource = attributes
