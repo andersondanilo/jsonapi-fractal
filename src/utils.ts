@@ -1,11 +1,11 @@
 import { camelCase, snakeCase, paramCase } from 'change-case'
 
-export function changeCase (attributes, caseType) {
+export function changeCase(attributes, caseType) {
   const caseTypes = {
     camelCase,
     snakeCase,
     paramCase,
-    kebabCase: paramCase
+    kebabCase: paramCase,
   }
 
   const caseFn = caseTypes[caseType]
@@ -23,7 +23,7 @@ export function changeCase (attributes, caseType) {
   return newAttributes
 }
 
-export function whitelist (obj, list) {
+export function whitelist(obj, list) {
   const result = {}
 
   for (const key of list) {

@@ -3,41 +3,41 @@ import Options from './Options'
 import JsonApiResponse from './JsonApiResponse'
 
 export default class Context {
-  input: any = null;
-  transformer: Tranformer = null;
-  included: boolean = false;
-  options: any = null;
-  render: (c: Context) => JsonApiResponse;
+  input: any = null
+  transformer: Tranformer = null
+  included = false
+  options: any = null
+  render: (c: Context) => JsonApiResponse
 
-  constructor (render) {
-    this.render = render;
+  constructor(render) {
+    this.render = render
   }
 
-  withInput (input) {
-    this.input = input;
+  withInput(input) {
+    this.input = input
 
-    return this;
+    return this
   }
 
-  withTransformer (transformer: Tranformer) {
-    this.transformer = transformer;
+  withTransformer(transformer: Tranformer) {
+    this.transformer = transformer
 
-    return this;
+    return this
   }
 
-  withIncluded (included) {
-    this.included = included;
+  withIncluded(included) {
+    this.included = included
 
-    return this;
+    return this
   }
 
-  withOptions (options: Options) {
+  withOptions(options: Options) {
     this.options = options
 
-    return this;
+    return this
   }
 
-  serialize (): JsonApiResponse {
-    return this.render(this);
+  serialize(): JsonApiResponse {
+    return this.render(this)
   }
 }
