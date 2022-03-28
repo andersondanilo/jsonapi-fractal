@@ -3,3 +3,11 @@ src
 tests
 coverage
 docs
+.github
+node_modules
+.editorconfig
+.eslintrc.js
+.prettierrc.js
+release.config.js
+tsconfig.eslint.json
+tsconfig.json

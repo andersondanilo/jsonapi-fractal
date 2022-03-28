@@ -39,13 +39,18 @@
     "change-case": "^4.1.1"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/jest": "^27.4.1",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",
+    "conventional-changelog-conventionalcommits": "^4.6.3",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.5.1",
     "prettier": "^2.6.1",
+    "semantic-release": "^19.0.2",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
     "typedoc": "^0.22.13",
