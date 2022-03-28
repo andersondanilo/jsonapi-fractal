@@ -11,3 +11,5 @@ node_modules
 release.config.js
 tsconfig.eslint.json
 tsconfig.json
+commitlint.config.js
+.husky
