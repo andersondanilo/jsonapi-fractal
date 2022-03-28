@@ -42,7 +42,7 @@
 
 #### Defined in
 
-[DefaultTransformer.ts:7](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/DefaultTransformer.ts#L7)
+[DefaultTransformer.ts:7](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/DefaultTransformer.ts#L7)
 
 ## Properties
 
@@ -56,7 +56,7 @@
 
 #### Defined in
 
-[Transformer.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/Transformer.ts#L5)
+[Transformer.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/Transformer.ts#L5)
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 #### Defined in
 
-[DefaultTransformer.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/DefaultTransformer.ts#L5)
+[DefaultTransformer.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/DefaultTransformer.ts#L5)
 
 ## Methods
 
@@ -95,4 +95,4 @@ ___
 
 #### Defined in
 
-[DefaultTransformer.ts:23](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/DefaultTransformer.ts#L23)
+[DefaultTransformer.ts:23](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/DefaultTransformer.ts#L23)

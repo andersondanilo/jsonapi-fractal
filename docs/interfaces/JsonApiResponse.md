@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[JsonApiResponse.ts:2](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/JsonApiResponse.ts#L2)
+[JsonApiResponse.ts:2](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/JsonApiResponse.ts#L2)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[JsonApiResponse.ts:4](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/JsonApiResponse.ts#L4)
+[JsonApiResponse.ts:4](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/JsonApiResponse.ts#L4)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[JsonApiResponse.ts:3](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/JsonApiResponse.ts#L3)
+[JsonApiResponse.ts:3](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/JsonApiResponse.ts#L3)

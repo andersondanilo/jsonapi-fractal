@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/andersondanilo/jsonapi-fractal/compare/v1.0.19...v1.1.0) (2022-03-28)
+
+
+### Features
+
+* automatic release ([2e8f801](https://github.com/andersondanilo/jsonapi-fractal/commit/2e8f8019eff314252edd7dcad0f68719c64986a2))
+
 # CHANGELOG
 
 ## 1.0.18 - 2020-12-04

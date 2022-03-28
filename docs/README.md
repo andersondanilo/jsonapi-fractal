@@ -41,7 +41,7 @@ jsonapi-fractal
 
 #### Defined in
 
-[deserializer.ts:3](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/deserializer.ts#L3)
+[deserializer.ts:3](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/deserializer.ts#L3)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-[serializer.ts:13](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/serializer.ts#L13)
+[serializer.ts:13](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/serializer.ts#L13)
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 #### Defined in
 
-[serializer.ts:9](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/serializer.ts#L9)
+[serializer.ts:9](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/serializer.ts#L9)
 
 ___
 
@@ -98,4 +98,4 @@ ___
 
 #### Defined in
 
-[utils.ts:26](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/utils.ts#L26)
+[utils.ts:26](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/utils.ts#L26)

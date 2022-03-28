@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[Options.ts:4](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/Options.ts#L4)
+[Options.ts:4](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/Options.ts#L4)
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 #### Defined in
 
-[Options.ts:3](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/Options.ts#L3)
+[Options.ts:3](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/Options.ts#L3)
 
 ___
 
@@ -42,4 +42,4 @@ ___
 
 #### Defined in
 
-[Options.ts:2](https://github.com/andersondanilo/jsonapi-fractal/blob/de98cb3/src/Options.ts#L2)
+[Options.ts:2](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/Options.ts#L2)
