@@ -6,11 +6,11 @@ import Options from './Options'
 import { whitelist, changeCase } from './utils'
 import JsonApiResponse from './JsonApiResponse'
 
-export function transform (): Context {
-  return new Context(serializeContext);
+export function transform(): Context {
+  return new Context(serializeContext)
 }
 
-export function serialize (data, type, options): JsonApiResponse {
+export function serialize(data, type, options): JsonApiResponse {
   if (!options) {
     options = {}
   }
@@ -22,22 +22,22 @@ export function serialize (data, type, options): JsonApiResponse {
     .serialize()
 }
 
-export function serializeContext (ctx: Context): JsonApiResponse {
+export function serializeContext(ctx: Context): JsonApiResponse {
   if (!ctx.options) {
-    ctx.options = {};
+    ctx.options = {}
   }
 
   if (ctx.input === null) {
-    return null;
+    return null
   }
 
-  const includedByType = {};
+  const includedByType = {}
 
   const data = Array.isArray(ctx.input)
     ? ctx.input.map((e) => serializeEntity(e, ctx.transformer, ctx.options, includedByType))
-    : serializeEntity(ctx.input, ctx.transformer, ctx.options, includedByType);
+    : serializeEntity(ctx.input, ctx.transformer, ctx.options, includedByType)
 
-  const included = [];
+  const included = []
 
   for (const type of Object.keys(includedByType)) {
     for (const id of Object.keys(includedByType[type])) {
@@ -54,29 +54,30 @@ export function serializeContext (ctx: Context): JsonApiResponse {
   return result
 }
 
-function serializeEntity (entity, transformer: Transformer, options: Options, includedByType): any {
-  let attributes = { ...transformer.transform(entity, options) };
-  const idKey = options.idKey || 'id';
-  const id = attributes[idKey] || entity[idKey];
+function serializeEntity(entity, transformer: Transformer, options: Options, includedByType): any {
+  let attributes = { ...transformer.transform(entity, options) }
+  const idKey = options.idKey || 'id'
+  const id = attributes[idKey] || entity[idKey]
 
-  delete attributes[idKey];
+  delete attributes[idKey]
 
-  const relationships = {};
+  const relationships = {}
 
   for (const relation of transformer.relationships) {
-    const ctx = transformer[relation](entity, options);
+    const ctx = transformer[relation](entity, options)
 
     relationships[relation] = {
       data: Array.isArray(ctx.input)
         ? ctx.input.map((e) => serializeRelation(e, ctx.transformer, options, ctx.included, includedByType))
-        : serializeRelation(ctx.input, ctx.transformer, options, ctx.included, includedByType)
+        : serializeRelation(ctx.input, ctx.transformer, options, ctx.included, includedByType),
     }
   }
 
   if (options.fields && options.fields[transformer.type]) {
-    const allowed = typeof(options.fields[transformer.type]) === 'string'
-      ? options.fields[transformer.type].split(',')
-      : options.fields[transformer.type].split(',');
+    const allowed =
+      typeof options.fields[transformer.type] === 'string'
+        ? options.fields[transformer.type].split(',')
+        : options.fields[transformer.type].split(',')
 
     attributes = whitelist(attributes, allowed)
   }
@@ -89,10 +90,10 @@ function serializeEntity (entity, transformer: Transformer, options: Options, in
     id,
     type: transformer.type,
     attributes,
-    relationships
-  };
+    relationships,
+  }
 
-  if (typeof(data.id) === 'undefined' || data.id === null) {
+  if (typeof data.id === 'undefined' || data.id === null) {
     delete data[id]
   }
 
@@ -107,13 +108,13 @@ function serializeEntity (entity, transformer: Transformer, options: Options, in
   return data
 }
 
-function serializeRelation (entity, transformer: Transformer, options: Options, included: boolean, includedByType) : any {
+function serializeRelation(entity, transformer: Transformer, options: Options, included: boolean, includedByType): any {
   if (!entity) {
-    return null;
+    return null
   }
 
-  const idKey = options.idKey || 'id';
-  let id = entity[idKey];
+  const idKey = options.idKey || 'id'
+  let id = entity[idKey]
 
   if (!id && entity) {
     id = entity
@@ -129,17 +130,12 @@ function serializeRelation (entity, transformer: Transformer, options: Options, 
     }
 
     if (!(id in includedByType[transformer.type])) {
-      includedByType[transformer.type][id] = serializeEntity(
-        entity,
-        transformer,
-        options,
-        includedByType
-      )
+      includedByType[transformer.type][id] = serializeEntity(entity, transformer, options, includedByType)
     }
   }
 
   return {
     type: transformer.type,
-    id
+    id,
   }
 }

@@ -41,6 +41,7 @@ import { deserialize } from 'jsonapi-fractal'
 const serializedData = ...
 const entity = deserialize(serializedData, { changeCase: 'camelCase' })
 ```
+
 ## Serialize with transformers
 ```js
 import { Transformer, DefaultTransformer, transform, whitelist } from 'jsonapi-fractal'
@@ -79,3 +80,7 @@ const serialized = transform()
   .withOptions({ idKey: '_id' })
   .serialize()
 ```
+
+## Links
+- [Documentation](docs/README.md)
+- [JSON:API Specification (v1.0)](https://jsonapi.org/format)

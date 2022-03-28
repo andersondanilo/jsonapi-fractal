@@ -1,11 +1,11 @@
 import { camelCase, snakeCase, paramCase } from 'change-case'
 
-export function changeCase (attributes, caseType, deep = false) {
+export function changeCase(attributes, caseType, deep = false) {
   const caseTypes = {
     camelCase,
     snakeCase,
     paramCase,
-    kebabCase: paramCase
+    kebabCase: paramCase,
   }
 
   const caseFn = caseTypes[caseType]
@@ -17,10 +17,7 @@ export function changeCase (attributes, caseType, deep = false) {
   const newAttributes = {}
 
   for (const key of Object.keys(attributes)) {
-    if (
-      deep &&
-      Object.prototype.toString.call(attributes[key]) === '[object Object]'
-    ) {
+    if (deep && Object.prototype.toString.call(attributes[key]) === '[object Object]') {
       newAttributes[caseFn(key)] = changeCase(attributes[key], caseType, deep)
     } else {
       newAttributes[caseFn(key)] = attributes[key]
@@ -30,7 +27,7 @@ export function changeCase (attributes, caseType, deep = false) {
   return newAttributes
 }
 
-export function whitelist (obj, list) {
+export function whitelist(obj, list) {
   const result = {}
 
   for (const key of list) {

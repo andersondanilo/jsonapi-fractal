@@ -10,37 +10,37 @@ describe('deserialize', () => {
           attributes: {
             'first-name': 'Joe',
             'last-name': 'Doe',
-            'birthday': {
+            birthday: {
               'day-of-birth': 1,
               'month-of-birth': 1,
-              'year-of-birth': 1970
-            }
+              'year-of-birth': 1970,
+            },
           },
           relationships: {
             address: {
               data: {
                 type: 'addr',
-                id: 1
-              }
+                id: 1,
+              },
             },
             images: {
               data: [
                 { type: 'img', id: 1 },
                 { type: 'img', id: 2 },
-              ]
-            }
-          }
-        }
+              ],
+            },
+          },
+        },
       ],
       included: [
         {
           type: 'addr',
           id: 1,
           attributes: {
-            street: 'Street 1'
-          }
-        }
-      ]
+            street: 'Street 1',
+          },
+        },
+      ],
     }
 
     expect(deserialize(serialized, { changeCase: 'camelCase', deep: true })).toEqual([
@@ -51,17 +51,14 @@ describe('deserialize', () => {
         birthday: {
           dayOfBirth: 1,
           monthOfBirth: 1,
-          yearOfBirth: 1970
+          yearOfBirth: 1970,
         },
         address: {
           id: 1,
-          street: 'Street 1'
+          street: 'Street 1',
         },
-        images: [
-          { id: 1 },
-          { id: 2 }
-        ]
-      }
+        images: [{ id: 1 }, { id: 2 }],
+      },
     ])
   })
 
@@ -75,21 +72,21 @@ describe('deserialize', () => {
             address: {
               data: {
                 type: 'addr',
-                id: 1
-              }
-            }
-          }
-        }
+                id: 1,
+              },
+            },
+          },
+        },
       ],
       included: [
         {
           type: 'addr',
           id: 1,
           attributes: {
-            street: 'Street 1'
-          }
-        }
-      ]
+            street: 'Street 1',
+          },
+        },
+      ],
     }
 
     expect(deserialize(serialized)).toEqual([
@@ -97,9 +94,9 @@ describe('deserialize', () => {
         id: 1,
         address: {
           id: 1,
-          street: 'Street 1'
-        }
-      }
+          street: 'Street 1',
+        },
+      },
     ])
   })
-});
+})
