@@ -9,7 +9,7 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "build": "tsc",
-    "lint": "eslint '*/**/*.ts'",
+    "lint": "eslint 'src/**/*.ts'",
     "typedoc": "typedoc --readme none --excludeInternal --excludePrivate src/index.ts"
   },
   "jest": {
