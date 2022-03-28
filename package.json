@@ -9,7 +9,8 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "build": "tsc",
-    "lint": "eslint '*/**/*.ts'"
+    "lint": "eslint '*/**/*.ts'",
+    "typedoc": "typedoc --readme none --excludeInternal --excludePrivate src/index.ts"
   },
   "jest": {
     "transform": {
@@ -20,18 +21,6 @@
       "js"
     ],
     "testRegex": "^.+\\.spec\\.ts$"
-  },
-  "devDependencies": {
-    "@types/jest": "^25.2.1",
-    "@typescript-eslint/eslint-plugin": "^5.16.0",
-    "@typescript-eslint/parser": "^5.16.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^25.2.7",
-    "prettier": "2.6.1",
-    "ts-jest": "^25.3.1",
-    "ts-node": "^8.8.2",
-    "typescript": "^3.8.3"
   },
   "repository": {
     "type": "git",
@@ -48,5 +37,19 @@
   },
   "dependencies": {
     "change-case": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.1",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
+    "typedoc": "^0.22.13",
+    "typedoc-plugin-markdown": "^3.11.14",
+    "typescript": "^4.6.3"
   }
 }
