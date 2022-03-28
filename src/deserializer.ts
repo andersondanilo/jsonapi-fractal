@@ -1,6 +1,6 @@
 import { changeCase } from './utils'
 
-export default function deserialize (response, options = {}) {
+export default function deserialize(response, options = {}) {
   if (!options) {
     options = {}
   }
@@ -16,7 +16,7 @@ export default function deserialize (response, options = {}) {
   }
 }
 
-function parseJsonApiSimpleResourceData (data, included, useCache, options) {
+function parseJsonApiSimpleResourceData(data, included, useCache, options) {
   if (!included.cached) {
     included.cached = {}
   }
@@ -48,24 +48,14 @@ function parseJsonApiSimpleResourceData (data, included, useCache, options) {
         const items = []
 
         relationRef.data.forEach((relationData, index) => {
-          const item = findJsonApiIncluded(
-            included,
-            relationData.type,
-            relationData.id,
-            options
-          )
+          const item = findJsonApiIncluded(included, relationData.type, relationData.id, options)
 
           items.push(item)
         })
 
         resource[relationName] = items
       } else if (relationRef && relationRef.data) {
-        resource[relationName] = findJsonApiIncluded(
-          included,
-          relationRef.data.type,
-          relationRef.data.id,
-          options
-        )
+        resource[relationName] = findJsonApiIncluded(included, relationRef.data.type, relationRef.data.id, options)
       } else {
         resource[relationName] = null
       }
@@ -75,7 +65,7 @@ function parseJsonApiSimpleResourceData (data, included, useCache, options) {
   return resource
 }
 
-function findJsonApiIncluded (included, type, id, options) {
+function findJsonApiIncluded(included, type, id, options) {
   let found = null
 
   included.forEach((item, index) => {

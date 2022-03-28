@@ -2,3 +2,5 @@ node_modules
 yarn.lock
 dist
 dist-esm
+package-lock.json
+coverage

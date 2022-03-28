@@ -1,2 +1,1 @@
-export default class JsonApiError extends Error {
-}
+export default class JsonApiError extends Error {}
