@@ -1,12 +1,13 @@
-import { deserialize } from '../src/index'
+import { deserialize, DocumentObject } from '../src'
+import { CaseType } from '../src/types'
 
 describe('deserialize', () => {
-  it('Complex serialize', () => {
-    const serialized = {
+  it('deserialize relationships included and not included', () => {
+    const serialized: DocumentObject = {
       data: [
         {
           type: 'users',
-          id: 1,
+          id: '1',
           attributes: {
             'first-name': 'Joe',
             'last-name': 'Doe',
@@ -15,13 +16,13 @@ describe('deserialize', () => {
             address: {
               data: {
                 type: 'addr',
-                id: 1,
+                id: '1',
               },
             },
             images: {
               data: [
-                { type: 'img', id: 1 },
-                { type: 'img', id: 2 },
+                { type: 'img', id: '1' },
+                { type: 'img', id: '2' },
               ],
             },
           },
@@ -30,7 +31,7 @@ describe('deserialize', () => {
       included: [
         {
           type: 'addr',
-          id: 1,
+          id: '1',
           attributes: {
             street: 'Street 1',
           },
@@ -38,54 +39,16 @@ describe('deserialize', () => {
       ],
     }
 
-    expect(deserialize(serialized, { changeCase: 'camelCase' })).toEqual([
+    expect(deserialize(serialized, { changeCase: CaseType.camelCase })).toEqual([
       {
-        id: 1,
+        id: '1',
         firstName: 'Joe',
         lastName: 'Doe',
         address: {
-          id: 1,
+          id: '1',
           street: 'Street 1',
         },
-        images: [{ id: 1 }, { id: 2 }],
-      },
-    ])
-  })
-
-  it('Deserialize data without attributes', () => {
-    const serialized = {
-      data: [
-        {
-          type: 'users',
-          id: 1,
-          relationships: {
-            address: {
-              data: {
-                type: 'addr',
-                id: 1,
-              },
-            },
-          },
-        },
-      ],
-      included: [
-        {
-          type: 'addr',
-          id: 1,
-          attributes: {
-            street: 'Street 1',
-          },
-        },
-      ],
-    }
-
-    expect(deserialize(serialized)).toEqual([
-      {
-        id: 1,
-        address: {
-          id: 1,
-          street: 'Street 1',
-        },
+        images: [{ id: '1' }, { id: '2' }],
       },
     ])
   })

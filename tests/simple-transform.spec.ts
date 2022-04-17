@@ -1,19 +1,20 @@
-import { serialize } from '../src/index'
+import { serialize } from '../src'
+import { CaseType } from '../src/types'
 
 describe('transform', () => {
-  it('Do simple transformation', () => {
+  it('do simple transformation', () => {
     const entity = {
       firstName: 'Joe',
       lastName: 'Doe',
       address: {
-        id: 1,
+        id: 'address-1',
       },
-      images: [1, { id: 2 }],
+      images: [{ id: 'image-1' }, { id: 'image-2' }],
     }
 
     const serialized = serialize(entity, 'users', {
       relationships: ['address', 'images'],
-      changeCase: 'kebabCase',
+      changeCase: CaseType.kebabCase,
     })
 
     expect(serialized).toEqual({
@@ -27,13 +28,13 @@ describe('transform', () => {
           address: {
             data: {
               type: 'address',
-              id: 1,
+              id: 'address-1',
             },
           },
           images: {
             data: [
-              { type: 'images', id: 1 },
-              { type: 'images', id: 2 },
+              { type: 'images', id: 'image-1' },
+              { type: 'images', id: 'image-2' },
             ],
           },
         },

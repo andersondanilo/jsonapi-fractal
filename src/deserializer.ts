@@ -1,82 +1,96 @@
+import { AttributesObject, DocumentObject, ExistingResourceObject, Options, ResourceObject } from './types'
 import { changeCase } from './utils'
 
-export default function deserialize(response, options = {}) {
-  if (!options) {
-    options = {}
+type IncludedCache = Record<string, Record<string, unknown>>
+
+export function deserialize<TEntity, TExtraOptions = unknown>(
+  response: DocumentObject,
+  options: Options<TExtraOptions> = {},
+): TEntity | TEntity[] | undefined {
+  if (!response.data) {
+    return undefined
   }
 
   const included = response.included || []
 
-  if (Array.isArray(response.data)) {
-    return response.data.map((data) => {
-      return parseJsonApiSimpleResourceData(data, included, false, options)
-    })
-  } else {
-    return parseJsonApiSimpleResourceData(response.data, included, false, options)
-  }
+  return Array.isArray(response.data)
+    ? response.data.map((data) => {
+        return parseJsonApiSimpleResourceData(data, included, options, false, {})
+      })
+    : parseJsonApiSimpleResourceData(response.data, included, options, false, {})
 }
 
-function parseJsonApiSimpleResourceData(data, included, useCache, options) {
-  if (!included.cached) {
-    included.cached = {}
+function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
+  data: ResourceObject,
+  included: ExistingResourceObject[],
+  options: Options<TExtraOptions>,
+  useCache: boolean,
+  includedCache: IncludedCache,
+): TEntity {
+  if (!(data.type in includedCache)) {
+    includedCache[data.type] = {}
   }
 
-  if (!(data.type in included.cached)) {
-    included.cached[data.type] = {}
+  const id: string | undefined = (data as ExistingResourceObject).id || undefined
+
+  if (useCache && id && id in includedCache[data.type]) {
+    return includedCache[data.type][id] as TEntity
   }
 
-  if (useCache && data.id in included.cached[data.type]) {
-    return included.cached[data.type][data.id]
-  }
-
-  let attributes = data.attributes || {}
+  let attributes: AttributesObject = data.attributes || {}
 
   if (options.changeCase) {
     attributes = changeCase(attributes, options.changeCase)
   }
 
-  const resource = attributes
-  resource.id = data.id
+  const resource: Record<string, unknown> = {
+    ...(id ? { id } : {}),
+    ...attributes,
+  }
 
-  included.cached[data.type][data.id] = resource
+  if (id) {
+    includedCache[data.type][id] = resource
+  }
 
   if (data.relationships) {
     for (const relationName of Object.keys(data.relationships)) {
-      const relationRef = data.relationships[relationName]
+      const relationReference = data.relationships[relationName]
 
-      if (Array.isArray(relationRef.data)) {
-        const items = []
+      if (!relationReference) {
+        continue
+      }
 
-        relationRef.data.forEach((relationData, index) => {
-          const item = findJsonApiIncluded(included, relationData.type, relationData.id, options)
-
-          items.push(item)
+      if (Array.isArray(relationReference.data)) {
+        resource[relationName] = relationReference.data.map((relationData) => {
+          return findJsonApiIncluded(included, includedCache, relationData.type, relationData.id, options)
         })
-
-        resource[relationName] = items
-      } else if (relationRef && relationRef.data) {
-        resource[relationName] = findJsonApiIncluded(included, relationRef.data.type, relationRef.data.id, options)
-      } else {
-        resource[relationName] = null
+      } else if (relationReference && relationReference.data) {
+        resource[relationName] = findJsonApiIncluded(
+          included,
+          includedCache,
+          relationReference.data.type,
+          relationReference.data.id,
+          options,
+        )
       }
     }
   }
 
-  return resource
+  return resource as TEntity
 }
 
-function findJsonApiIncluded(included, type, id, options) {
-  let found = null
+function findJsonApiIncluded<TEntity, TExtraOptions>(
+  included: ExistingResourceObject[],
+  includedCache: IncludedCache,
+  type: string,
+  id: string,
+  options: Options<TExtraOptions>,
+): TEntity {
+  const foundResource = included.find((item) => item.type === type && item.id === id)
 
-  included.forEach((item, index) => {
-    if (item.type === type && item.id === id) {
-      found = parseJsonApiSimpleResourceData(item, included, true, options)
-    }
-  })
-
-  if (!found) {
-    found = { id }
+  if (!foundResource) {
+    return { id } as unknown as TEntity
   }
 
-  return found
+  return parseJsonApiSimpleResourceData(foundResource, included, options, true, includedCache)
 }

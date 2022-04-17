@@ -2,6 +2,7 @@ tsconfig.json
 src
 tests
 coverage
+examples
 docs
 .github
 node_modules

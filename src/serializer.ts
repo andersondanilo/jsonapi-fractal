@@ -1,18 +1,30 @@
-import Context from './Context'
-import DefaultTransformer from './DefaultTransformer'
-import Transformer from './Transformer'
-import JsonApiError from './errors/JsonApiError'
-import Options from './Options'
+import { Context, ContextBuilder } from './context'
+import { DefaultTransformer } from './default-transformer'
+import { Transformer } from './transformer'
+import {
+  Options,
+  DocumentObject,
+  ResourceObject,
+  RelationshipObject,
+  NewResourceObject,
+  JsonApiFractalError,
+  ResourceIdentifierObject,
+} from './types'
 import { whitelist, changeCase } from './utils'
-import JsonApiResponse from './JsonApiResponse'
 
-export function transform(): Context {
-  return new Context(serializeContext)
+type IncludedRecord = Record<string, Record<string, ResourceObject>>
+
+export function transform<TEntity, TExtraOptions = unknown>(): ContextBuilder<TEntity, TExtraOptions> {
+  return new ContextBuilder(serializeContext)
 }
 
-export function serialize(data, type, options): JsonApiResponse {
+export function serialize<TEntity, TExtraOptions = unknown>(
+  data: TEntity,
+  type: string,
+  options: Options<TExtraOptions> & { relationships?: string[] },
+): DocumentObject {
   if (!options) {
-    options = {}
+    options = {} as Options<TExtraOptions>
   }
 
   return transform()
@@ -22,22 +34,21 @@ export function serialize(data, type, options): JsonApiResponse {
     .serialize()
 }
 
-export function serializeContext(ctx: Context): JsonApiResponse {
-  if (!ctx.options) {
-    ctx.options = {}
+export function serializeContext<TEntity, TExtraOptions = unknown>(
+  context: Context<TEntity, TExtraOptions>,
+): DocumentObject {
+  if (!context.input) {
+    // eslint-disable-next-line unicorn/no-null
+    return { data: null }
   }
 
-  if (ctx.input === null) {
-    return null
-  }
+  const includedByType: IncludedRecord = {}
 
-  const includedByType = {}
+  const data = Array.isArray(context.input)
+    ? context.input.map((entity) => serializeEntity(entity, context.transformer, context.options, includedByType))
+    : serializeEntity(context.input, context.transformer, context.options, includedByType)
 
-  const data = Array.isArray(ctx.input)
-    ? ctx.input.map((e) => serializeEntity(e, ctx.transformer, ctx.options, includedByType))
-    : serializeEntity(ctx.input, ctx.transformer, ctx.options, includedByType)
-
-  const included = []
+  const included: ResourceObject[] = []
 
   for (const type of Object.keys(includedByType)) {
     for (const id of Object.keys(includedByType[type])) {
@@ -45,92 +56,100 @@ export function serializeContext(ctx: Context): JsonApiResponse {
     }
   }
 
-  const result: any = { data }
-
-  if (included.length > 0) {
-    result.included = included
-  }
-
-  return result
+  return {
+    data,
+    ...(included.length > 0 ? { included } : {}),
+  } as DocumentObject
 }
 
-function serializeEntity(entity, transformer: Transformer, options: Options, includedByType): any {
+function serializeEntity<TEntity, TExtraOptions>(
+  entity: TEntity,
+  transformer: Transformer<TEntity, TExtraOptions>,
+  options: Options<TExtraOptions>,
+  includedByType: IncludedRecord,
+): ResourceObject | NewResourceObject {
   let attributes = { ...transformer.transform(entity, options) }
   const idKey = options.idKey || 'id'
-  const id = attributes[idKey] || entity[idKey]
+  const id: string | undefined =
+    (attributes[idKey] as string) || (entity as unknown as Record<string, string>)[idKey] || undefined
 
   delete attributes[idKey]
 
-  const relationships = {}
+  const relationships: Record<string, RelationshipObject> = {}
 
-  for (const relation of transformer.relationships) {
-    const ctx = transformer[relation](entity, options)
+  for (const relation of Object.keys(transformer.relationships)) {
+    const context: Context<unknown, TExtraOptions> = {
+      ...transformer.relationships[relation](entity),
+      options,
+    }
 
-    relationships[relation] = {
-      data: Array.isArray(ctx.input)
-        ? ctx.input.map((e) => serializeRelation(e, ctx.transformer, options, ctx.included, includedByType))
-        : serializeRelation(ctx.input, ctx.transformer, options, ctx.included, includedByType),
+    if (Array.isArray(context.input)) {
+      relationships[relation] = {
+        data: context.input
+          .map((inputItem) => serializeRelation({ ...context, input: inputItem }, includedByType))
+          .filter((identifier) => !!identifier) as ResourceIdentifierObject[],
+      }
+    } else if (context.input) {
+      relationships[relation] = {
+        data: serializeRelation(context, includedByType) as ResourceIdentifierObject,
+      }
     }
   }
 
   if (options.fields && options.fields[transformer.type]) {
-    const allowed =
-      typeof options.fields[transformer.type] === 'string'
-        ? options.fields[transformer.type].split(',')
-        : options.fields[transformer.type].split(',')
-
-    attributes = whitelist(attributes, allowed)
+    attributes = whitelist(attributes, options.fields[transformer.type])
   }
 
   if (options.changeCase) {
     attributes = changeCase(attributes, options.changeCase)
   }
 
-  const data = {
-    id,
+  const data: Omit<ResourceObject, 'id'> & { id?: string } = {
     type: transformer.type,
     attributes,
     relationships,
   }
 
-  if (typeof data.id === 'undefined' || data.id === null) {
-    delete data[id]
+  if (id) {
+    data.id = id
   }
 
-  if (Object.keys(data.relationships).length === 0) {
+  if (data.relationships && Object.keys(data.relationships).length === 0) {
     delete data.relationships
-  }
-
-  if (Object.keys(data.attributes).length === 0) {
-    delete data.attributes
   }
 
   return data
 }
 
-function serializeRelation(entity, transformer: Transformer, options: Options, included: boolean, includedByType): any {
+function serializeRelation<TEntity = unknown, TExtraOptions = unknown>(
+  context: Context<TEntity, TExtraOptions>,
+  includedByType: IncludedRecord,
+): ResourceIdentifierObject | undefined {
+  const { input: entity, options, transformer, included } = context
+
   if (!entity) {
-    return null
+    return undefined
   }
 
   const idKey = options.idKey || 'id'
-  let id = entity[idKey]
-
-  if (!id && entity) {
-    id = entity
-  }
+  const id = (entity as unknown as Record<string, string>)[idKey]
 
   if (!id) {
-    throw new JsonApiError('Resource without id')
+    throw new JsonApiFractalError('Resource without id')
   }
 
   if (included) {
     if (!(transformer.type in includedByType)) {
-      includedByType[transformer.type] = []
+      includedByType[transformer.type] = {}
     }
 
     if (!(id in includedByType[transformer.type])) {
-      includedByType[transformer.type][id] = serializeEntity(entity, transformer, options, includedByType)
+      includedByType[transformer.type][id] = serializeEntity(
+        entity,
+        transformer,
+        options,
+        includedByType,
+      ) as ResourceObject
     }
   }
 

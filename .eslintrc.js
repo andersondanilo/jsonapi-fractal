@@ -14,11 +14,12 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    'plugin:unicorn/all'
   ],
   rules: {
     'semi': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-explicit-any': 'error',
     'no-multiple-empty-lines': ["error", { "max": 1, "maxEOF": 0 }]
   }
 }
