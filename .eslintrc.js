@@ -15,12 +15,17 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
-    'plugin:unicorn/all'
+    'plugin:unicorn/all',
+    'plugin:jsdoc/recommended'
   ],
   rules: {
     'semi': 'off',
     '@typescript-eslint/no-explicit-any': 'error',
-    'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 0 }]
+    'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 0 }],
+    'unicorn/prefer-node-protocol': 'off',
+    'jsdoc/require-jsdoc': ['error', { 'publicOnly': true }],
+    'jsdoc/require-param-type': 'off',
+    'jsdoc/require-returns': 'off'
   },
   overrides: [
     {

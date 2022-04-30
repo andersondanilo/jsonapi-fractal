@@ -3,6 +3,12 @@ import { AttributesObject, CaseType } from './types'
 
 type CaseFunction = (input: string) => string
 
+/**
+ * Used to change the case (e.g. captalization) of the keys of a object
+ *
+ * @param originalAttributes
+ * @param caseType
+ */
 export function changeCase(originalAttributes: AttributesObject, caseType: CaseType): AttributesObject {
   const caseTypes: Record<CaseType, CaseFunction> = {
     [CaseType.camelCase]: camelCase,
@@ -25,6 +31,12 @@ export function changeCase(originalAttributes: AttributesObject, caseType: CaseT
   return parsedAttributes
 }
 
+/**
+ * Keep only a set of fields on a given object
+ *
+ * @param object
+ * @param list
+ */
 export function whitelist(object: unknown, list: string[]): AttributesObject {
   const result: Record<string, unknown> = {}
 
@@ -36,7 +48,10 @@ export function whitelist(object: unknown, list: string[]): AttributesObject {
 }
 
 /**
- * create record from keys and mapped values
+ * Create record from keys and mapped values
+ *
+ * @param keys
+ * @param getValue
  */
 export function createRecordFromKeys<K extends string | number | symbol, V>(
   keys: K[],

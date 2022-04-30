@@ -15,10 +15,20 @@ import { JsonApiFractalError } from './errors'
 
 type IncludedRecord = Record<string, Record<string, ResourceObject>>
 
+/**
+ * Create a ContextBuilder, used to configure the transformation
+ */
 export function transform<TEntity, TExtraOptions = unknown>(): ContextBuilder<TEntity, TExtraOptions> {
   return new ContextBuilder(serializeContext)
 }
 
+/**
+ * Serialize the entity
+ *
+ * @param data entity to be serialized
+ * @param type type of the entity
+ * @param options options used in the serialization
+ */
 export function serialize<TEntity, TExtraOptions = unknown>(
   data: TEntity,
   type: string,
@@ -35,9 +45,7 @@ export function serialize<TEntity, TExtraOptions = unknown>(
     .serialize()
 }
 
-export function serializeContext<TEntity, TExtraOptions = unknown>(
-  context: Context<TEntity, TExtraOptions>,
-): DocumentObject {
+function serializeContext<TEntity, TExtraOptions = unknown>(context: Context<TEntity, TExtraOptions>): DocumentObject {
   if (!context.input) {
     // eslint-disable-next-line unicorn/no-null
     return { data: null }

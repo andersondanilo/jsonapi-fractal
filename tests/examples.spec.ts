@@ -1,6 +1,6 @@
-import * as vm from 'node:vm'
-import { promisify } from 'node:util'
-import * as fs from 'node:fs'
+import * as vm from 'vm'
+import { promisify } from 'util'
+import * as fs from 'fs'
 import * as jsonApiFracal from '../src'
 import * as acorn from 'acorn'
 

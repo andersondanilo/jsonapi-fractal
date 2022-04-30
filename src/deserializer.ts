@@ -3,6 +3,12 @@ import { changeCase } from './utils'
 
 type IncludedCache = Record<string, Record<string, unknown>>
 
+/**
+ * Deserialize a JSON:API response
+ *
+ * @param response
+ * @param options
+ */
 export function deserialize<TEntity, TExtraOptions = unknown>(
   response: DocumentObject,
   options: Options<TExtraOptions> = {},
@@ -79,6 +85,14 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
   return resource as TEntity
 }
 
+/**
+ *
+ * @param included
+ * @param includedCache
+ * @param type
+ * @param id
+ * @param options
+ */
 function findJsonApiIncluded<TEntity, TExtraOptions>(
   included: ExistingResourceObject[],
   includedCache: IncludedCache,
