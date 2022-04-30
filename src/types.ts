@@ -50,9 +50,4 @@ export type Options<TExtraOptions = void> = {
   extra?: TExtraOptions
 }
 
-export class JsonApiFractalError extends Error {
-  constructor(message: string) {
-    super(message)
-    this.name = 'JsonApiFractalError'
-  }
-}
+export type SerializeOptions<TExtraOptions = void> = Options<TExtraOptions> & { relationships?: string[] }

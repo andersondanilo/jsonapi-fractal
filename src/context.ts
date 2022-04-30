@@ -1,5 +1,6 @@
 import { Transformer } from './transformer'
-import { Options, DocumentObject, JsonApiFractalError } from './types'
+import { Options, DocumentObject } from './types'
+import { JsonApiFractalError } from './errors'
 
 export type Context<TEntity, TExtraProperties = unknown> = {
   input: TEntity | undefined

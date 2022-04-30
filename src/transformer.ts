@@ -18,6 +18,7 @@ export type TransformerRelationships<TEntity, TExtraOptions> = Record<
 
 export type RelationshipTransformerInfoFunction<TEntity, TExtraOptions> = (
   entity: TEntity,
+  options: Options<TExtraOptions>,
 ) => RelationshipTransformerInfo<TExtraOptions>
 
 export type RelationshipTransformerInfo<TExtraOptions, T = unknown> = {

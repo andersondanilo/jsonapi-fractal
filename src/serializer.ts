@@ -7,10 +7,11 @@ import {
   ResourceObject,
   RelationshipObject,
   NewResourceObject,
-  JsonApiFractalError,
   ResourceIdentifierObject,
+  SerializeOptions,
 } from './types'
 import { whitelist, changeCase } from './utils'
+import { JsonApiFractalError } from './errors'
 
 type IncludedRecord = Record<string, Record<string, ResourceObject>>
 
@@ -21,10 +22,10 @@ export function transform<TEntity, TExtraOptions = unknown>(): ContextBuilder<TE
 export function serialize<TEntity, TExtraOptions = unknown>(
   data: TEntity,
   type: string,
-  options: Options<TExtraOptions> & { relationships?: string[] },
+  options?: SerializeOptions<TExtraOptions>,
 ): DocumentObject {
   if (!options) {
-    options = {} as Options<TExtraOptions>
+    options = {} as SerializeOptions<TExtraOptions>
   }
 
   return transform()
@@ -79,7 +80,7 @@ function serializeEntity<TEntity, TExtraOptions>(
 
   for (const relation of Object.keys(transformer.relationships)) {
     const context: Context<unknown, TExtraOptions> = {
-      ...transformer.relationships[relation](entity),
+      ...transformer.relationships[relation](entity, options),
       options,
     }
 
