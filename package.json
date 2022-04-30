@@ -11,6 +11,8 @@
     "build": "tsc",
     "lint": "eslint '{src,examples,tests}/**/*.{ts,js}'",
     "typedoc": "typedoc --readme none --excludeInternal --excludePrivate src/index.ts",
+    "update-examples": "embedme README.md",
+    "prepare-release": "npm run typedoc && npm run update-examples",
     "prepare": "husky install"
   },
   "jest": {

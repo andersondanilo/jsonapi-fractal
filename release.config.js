@@ -12,7 +12,7 @@ module.exports = {
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "npm run typedoc"
+        "prepareCmd": "npm run prepare-release"
       }
     ],
     "@semantic-release/npm",

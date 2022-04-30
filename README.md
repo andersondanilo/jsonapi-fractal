@@ -24,7 +24,7 @@ npm install jsonapi-fractal --save
 
 ## Serialize with transformers
 ```js
-// examples/serialize-with-transformer.js
+// examples/serialize-with-transformers.js
 ```
 
 ## Links
