@@ -20,6 +20,16 @@ module.exports = {
   rules: {
     'semi': 'off',
     '@typescript-eslint/no-explicit-any': 'error',
-    'no-multiple-empty-lines': ["error", { "max": 1, "maxEOF": 0 }]
-  }
+    'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 0 }]
+  },
+  overrides: [
+    {
+      files: ['examples/*.js'],
+      rules: {
+        //'@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+        'unicorn/prefer-module': 'off',
+      }
+    }
+  ]
 }
