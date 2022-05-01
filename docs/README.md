@@ -33,7 +33,7 @@ jsonapi-fractal
 
 #### Defined in
 
-[src/types.ts:17](https://github.com/andersondanilo/jsonapi-fractal/blob/7bc2651/src/types.ts#L17)
+[src/types.ts:17](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/types.ts#L17)
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 #### Defined in
 
-[src/context.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/7bc2651/src/context.ts#L5)
+[src/context.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/context.ts#L5)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-[src/types.ts:15](https://github.com/andersondanilo/jsonapi-fractal/blob/7bc2651/src/types.ts#L15)
+[src/types.ts:15](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/types.ts#L15)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-[src/types.ts:46](https://github.com/andersondanilo/jsonapi-fractal/blob/7bc2651/src/types.ts#L46)
+[src/types.ts:46](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/types.ts#L46)
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 #### Defined in
 
-[src/transformer.ts:14](https://github.com/andersondanilo/jsonapi-fractal/blob/7bc2651/src/transformer.ts#L14)
+[src/transformer.ts:14](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/transformer.ts#L14)
 
 ## Functions
 
@@ -141,7 +141,7 @@ Deserialize a JSON:API response
 
 #### Defined in
 
-[src/deserializer.ts:12](https://github.com/andersondanilo/jsonapi-fractal/blob/7bc2651/src/deserializer.ts#L12)
+[src/deserializer.ts:12](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/deserializer.ts#L12)
 
 ___
 
@@ -172,7 +172,7 @@ Serialize the entity
 
 #### Defined in
 
-[src/serializer.ts:32](https://github.com/andersondanilo/jsonapi-fractal/blob/7bc2651/src/serializer.ts#L32)
+[src/serializer.ts:32](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/serializer.ts#L32)
 
 ___
 
@@ -195,7 +195,7 @@ Create a ContextBuilder, used to configure the transformation
 
 #### Defined in
 
-[src/serializer.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/7bc2651/src/serializer.ts#L21)
+[src/serializer.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/serializer.ts#L21)
 
 ___
 
@@ -218,4 +218,4 @@ Keep only a set of fields on a given object
 
 #### Defined in
 
-[src/utils.ts:40](https://github.com/andersondanilo/jsonapi-fractal/blob/7bc2651/src/utils.ts#L40)
+[src/utils.ts:40](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/utils.ts#L40)
