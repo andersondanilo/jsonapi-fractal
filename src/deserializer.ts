@@ -46,7 +46,7 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
   let attributes: AttributesObject = data.attributes || {}
 
   if (options.changeCase) {
-    attributes = changeCase(attributes, options.changeCase)
+    attributes = changeCase(attributes, options.changeCase, options.changeCaseDeep)
   }
 
   const resource: Record<string, unknown> = {
