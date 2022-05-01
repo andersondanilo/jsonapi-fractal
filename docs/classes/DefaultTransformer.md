@@ -56,13 +56,13 @@
 
 #### Defined in
 
-[src/default-transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/default-transformer.ts#L8)
+[src/default-transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/default-transformer.ts#L8)
 
 ## Properties
 
 ### relationships
 
-• `Readonly` **relationships**: `Record`<`string`, `RelationshipTransformerInfoFunction`<`TEntity`, `TExtraOptions`\>\>
+• `Readonly` **relationships**: `Record`<`string`, [`RelationshipTransformerInfoFunction`](../README.md#relationshiptransformerinfofunction)<`TEntity`, `TExtraOptions`\>\>
 
 #### Overrides
 
@@ -70,7 +70,7 @@
 
 #### Defined in
 
-[src/default-transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/default-transformer.ts#L6)
+[src/default-transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/default-transformer.ts#L6)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 ### transform
 
-▸ **transform**(`entity`): `JsonObject`
+▸ **transform**(`entity`): [`JsonObject`](../README.md#jsonobject)
 
 #### Parameters
 
@@ -96,7 +96,7 @@ ___
 
 #### Returns
 
-`JsonObject`
+[`JsonObject`](../README.md#jsonobject)
 
 #### Overrides
 
@@ -104,4 +104,4 @@ ___
 
 #### Defined in
 
-[src/default-transformer.ts:23](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/default-transformer.ts#L23)
+[src/default-transformer.ts:23](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/default-transformer.ts#L23)

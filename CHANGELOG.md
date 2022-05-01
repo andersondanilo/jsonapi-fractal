@@ -1,3 +1,10 @@
+## [2.1.0](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.0.1...v2.1.0) (2022-05-01)
+
+
+### Features
+
+* deep change case ([#15](https://github.com/andersondanilo/jsonapi-fractal/issues/15)) ([19282ab](https://github.com/andersondanilo/jsonapi-fractal/commit/19282abf95e62a39a39466e2df316150b1616966))
+
 ### [2.0.1](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.0.0...v2.0.1) (2022-05-01)
 
 

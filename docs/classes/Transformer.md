@@ -45,7 +45,7 @@
 
 #### Defined in
 
-[src/transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/transformer.ts#L8)
+[src/transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/transformer.ts#L8)
 
 ## Properties
 
@@ -55,7 +55,7 @@
 
 #### Defined in
 
-[src/transformer.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/transformer.ts#L5)
+[src/transformer.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/transformer.ts#L5)
 
 ___
 
@@ -65,13 +65,13 @@ ___
 
 #### Defined in
 
-[src/transformer.ts:4](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/transformer.ts#L4)
+[src/transformer.ts:4](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/transformer.ts#L4)
 
 ## Methods
 
 ### transform
 
-▸ `Abstract` **transform**(`entity`, `options`): `JsonObject`
+▸ `Abstract` **transform**(`entity`, `options`): [`JsonObject`](../README.md#jsonobject)
 
 #### Parameters
 
@@ -82,8 +82,8 @@ ___
 
 #### Returns
 
-`JsonObject`
+[`JsonObject`](../README.md#jsonobject)
 
 #### Defined in
 
-[src/transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/0809e68/src/transformer.ts#L6)
+[src/transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/transformer.ts#L6)
