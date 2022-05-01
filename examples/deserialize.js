@@ -1,4 +1,4 @@
-const { deserialize } = require('jsonapi-fractal')
+const { deserialize, CaseType } = require('jsonapi-fractal')
 
 const serializedData = {
   data: {
@@ -10,7 +10,7 @@ const serializedData = {
     },
   },
 }
-const entity = deserialize(serializedData, { changeCase: 'camelCase' })
+const entity = deserialize(serializedData, { changeCase: CaseType.camelCase })
 
 console.log(JSON.stringify(entity))
 

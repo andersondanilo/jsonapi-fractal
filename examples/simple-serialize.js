@@ -1,4 +1,4 @@
-const { serialize } = require('jsonapi-fractal')
+const { serialize, CaseType } = require('jsonapi-fractal')
 
 const entity = {
   id: 1,
@@ -12,7 +12,7 @@ const entity = {
 
 const serialized = serialize(entity, 'users', {
   relationships: ['address', 'images'],
-  changeCase: 'kebabCase',
+  changeCase: CaseType.kebabCase,
 })
 
 console.log(JSON.stringify(serialized))
