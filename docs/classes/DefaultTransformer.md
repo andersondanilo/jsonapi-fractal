@@ -1,10 +1,17 @@
 [jsonapi-fractal](../README.md) / DefaultTransformer
 
-# Class: DefaultTransformer
+# Class: DefaultTransformer<TEntity, TExtraOptions\>
+
+## Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `TEntity` | `unknown` |
+| `TExtraOptions` | `void` |
 
 ## Hierarchy
 
-- [`Transformer`](Transformer.md)
+- [`Transformer`](Transformer.md)<`TEntity`, `TExtraOptions`\>
 
   ↳ **`DefaultTransformer`**
 
@@ -27,14 +34,21 @@
 
 ### constructor
 
-• **new DefaultTransformer**(`type`, `relationships?`)
+• **new DefaultTransformer**<`TEntity`, `TExtraOptions`\>(`type`, `relationshipNames?`)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `TEntity` | `unknown` |
+| `TExtraOptions` | `void` |
 
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `type` | `any` | `undefined` |
-| `relationships` | `any`[] | `[]` |
+| `type` | `string` | `undefined` |
+| `relationshipNames` | `string`[] | `[]` |
 
 #### Overrides
 
@@ -42,52 +56,47 @@
 
 #### Defined in
 
-[DefaultTransformer.ts:7](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/DefaultTransformer.ts#L7)
+[src/default-transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/f5b832b/src/default-transformer.ts#L8)
 
 ## Properties
 
 ### relationships
 
-• **relationships**: `string`[] = `[]`
+• `Readonly` **relationships**: `Record`<`string`, `RelationshipTransformerInfoFunction`<`TEntity`, `TExtraOptions`\>\>
 
-#### Inherited from
+#### Overrides
 
 [Transformer](Transformer.md).[relationships](Transformer.md#relationships)
 
 #### Defined in
 
-[Transformer.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/Transformer.ts#L5)
+[src/default-transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/f5b832b/src/default-transformer.ts#L6)
 
 ___
 
 ### type
 
-• **type**: `string` = `'entities'`
+• **type**: `string`
 
-#### Overrides
+#### Inherited from
 
 [Transformer](Transformer.md).[type](Transformer.md#type)
-
-#### Defined in
-
-[DefaultTransformer.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/DefaultTransformer.ts#L5)
 
 ## Methods
 
 ### transform
 
-▸ **transform**(`entity`, `options`): `any`
+▸ **transform**(`entity`): `JsonObject`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `entity` | `any` |
-| `options` | [`Options`](../interfaces/Options.md) |
 
 #### Returns
 
-`any`
+`JsonObject`
 
 #### Overrides
 
@@ -95,4 +104,4 @@ ___
 
 #### Defined in
 
-[DefaultTransformer.ts:23](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/DefaultTransformer.ts#L23)
+[src/default-transformer.ts:23](https://github.com/andersondanilo/jsonapi-fractal/blob/f5b832b/src/default-transformer.ts#L23)

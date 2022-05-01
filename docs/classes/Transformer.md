@@ -1,6 +1,13 @@
 [jsonapi-fractal](../README.md) / Transformer
 
-# Class: Transformer
+# Class: Transformer<TEntity, TExtraOptions\>
+
+## Type parameters
+
+| Name |
+| :------ |
+| `TEntity` |
+| `TExtraOptions` |
 
 ## Hierarchy
 
@@ -27,45 +34,56 @@
 
 ### constructor
 
-• **new Transformer**()
+• **new Transformer**<`TEntity`, `TExtraOptions`\>()
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `TEntity` |
+| `TExtraOptions` |
+
+#### Defined in
+
+[src/transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/f5b832b/src/transformer.ts#L8)
 
 ## Properties
 
 ### relationships
 
-• **relationships**: `string`[] = `[]`
+• **relationships**: [`TransformerRelationships`](../README.md#transformerrelationships)<`TEntity`, `TExtraOptions`\>
 
 #### Defined in
 
-[Transformer.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/Transformer.ts#L5)
+[src/transformer.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/f5b832b/src/transformer.ts#L5)
 
 ___
 
 ### type
 
-• **type**: `string` = `'entities'`
+• **type**: `string`
 
 #### Defined in
 
-[Transformer.ts:4](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/Transformer.ts#L4)
+[src/transformer.ts:4](https://github.com/andersondanilo/jsonapi-fractal/blob/f5b832b/src/transformer.ts#L4)
 
 ## Methods
 
 ### transform
 
-▸ `Abstract` **transform**(`entity`, `options`): `any`
+▸ `Abstract` **transform**(`entity`, `options`): `JsonObject`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `entity` | `any` |
-| `options` | [`Options`](../interfaces/Options.md) |
+| `entity` | `TEntity` |
+| `options` | [`Options`](../README.md#options)<`TExtraOptions`\> |
 
 #### Returns
 
-`any`
+`JsonObject`
 
 #### Defined in
 
-[Transformer.ts:7](https://github.com/andersondanilo/jsonapi-fractal/blob/c2e4199/src/Transformer.ts#L7)
+[src/transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/f5b832b/src/transformer.ts#L6)
