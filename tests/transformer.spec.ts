@@ -1,18 +1,18 @@
 /* tslint:disable:max-classes-per-file */
 
-import { transform, whitelist, DefaultTransformer, Transformer } from '../src/index'
+import { transform, whitelist, DefaultTransformer, Transformer } from '../src'
 
-interface Product {
+type Product = {
   _id: number
   name: string
 }
 
-interface Order {
+type Order = {
   _id: number
   product: Product
 }
 
-interface User {
+type User = {
   _id: number
   firstName: string
   lastName: string
@@ -21,29 +21,46 @@ interface User {
   orders: Order[]
 }
 
-class OrderTransformer extends Transformer {
-  type = 'orders'
-  relationships = ['product']
+class OrderTransformer extends Transformer<Order, unknown> {
+  constructor() {
+    super()
+
+    this.type = 'orders'
+    this.relationships = {
+      product: this.product,
+    }
+  }
 
   transform(order: Order) {
     return { _id: order._id }
   }
 
   product(order: Order) {
-    return transform().withInput(order.product).withTransformer(new DefaultTransformer('products')).withIncluded(true)
+    return transform()
+      .withInput(order.product)
+      .withTransformer(new DefaultTransformer('products'))
+      .withIncluded(true)
+      .toContext()
   }
 }
 
-class UserTransformer extends Transformer {
-  type = 'users'
-  relationships = ['company', 'comments', 'orders']
+class UserTransformer extends Transformer<User, unknown> {
+  constructor() {
+    super()
+    this.type = 'users'
+    this.relationships = {
+      company: this.company,
+      comments: this.comments,
+      orders: this.orders,
+    }
+  }
 
   transform(user: User) {
     return whitelist(user, ['_id', 'firstName', 'lastName'])
   }
 
   orders(user: User) {
-    return transform().withInput(user.orders).withTransformer(new OrderTransformer()).withIncluded(true)
+    return transform().withInput(user.orders).withTransformer(new OrderTransformer()).withIncluded(true).toContext()
   }
 
   company(user: User) {
@@ -51,6 +68,7 @@ class UserTransformer extends Transformer {
       .withInput({ _id: user.companyId })
       .withTransformer(new DefaultTransformer('companies'))
       .withIncluded(false)
+      .toContext()
   }
 
   comments(user: User) {
@@ -58,11 +76,12 @@ class UserTransformer extends Transformer {
       .withInput(user.commentIds.map((id) => ({ _id: id })))
       .withTransformer(new DefaultTransformer('comments'))
       .withIncluded(false)
+      .toContext()
   }
 }
 
 describe('transform', () => {
-  it('Included transformation', () => {
+  it('included transformation', () => {
     const entity: User = {
       _id: 1,
       firstName: 'Joe',
@@ -79,8 +98,6 @@ describe('transform', () => {
         },
       ],
     }
-
-    const collection = [entity]
 
     const entitySerialized = transform()
       .withInput(entity)
@@ -119,6 +136,7 @@ describe('transform', () => {
         {
           id: 2,
           type: 'orders',
+          attributes: {},
           relationships: {
             product: {
               data: {
@@ -137,22 +155,5 @@ describe('transform', () => {
         },
       ],
     })
-
-    // const collectionSerialized = transform()
-    //   .withInput(collection)
-    //   .withTransformer(new UserTransformer)
-    //   .withOptions({ idKey: '_id' })
-    //   .serialize();
-
-    // expect(collectionSerialized).toEqual({
-    //   data: [{
-    //     type: "users",
-    //     id: 1,
-    //     attributes: {
-    //       firstName: "Joe",
-    //       lastName: "Doe"
-    //     }
-    //   }]
-    // });
   })
 })

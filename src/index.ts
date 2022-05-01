@@ -1,20 +1,8 @@
-import Transformer from './Transformer'
-import Options from './Options'
-import Context from './Context'
-import DefaultTransformer from './DefaultTransformer'
-import deserialize from './deserializer'
-import JsonApiResponse from './JsonApiResponse'
-import { serialize, transform } from './serializer'
-import { whitelist } from './utils'
-
-export {
-  Transformer,
-  DefaultTransformer,
-  transform,
-  serialize,
-  JsonApiResponse,
-  deserialize,
-  whitelist,
-  Options,
-  Context,
-}
+export { Transformer, TransformerRelationships } from './transformer'
+export { DocumentObject, Options, AttributesObject } from './types'
+export { DefaultTransformer } from './default-transformer'
+export { Context } from './context'
+export { deserialize } from './deserializer'
+export { serialize, transform } from './serializer'
+export { whitelist } from './utils'
+export { JsonApiFractalError } from './errors'
