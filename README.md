@@ -18,7 +18,7 @@ npm install jsonapi-fractal --save
 ```js
 // examples/simple-serialize.js
 
-const { serialize } = require('jsonapi-fractal')
+const { serialize, CaseType } = require('jsonapi-fractal')
 
 const entity = {
   id: 1,
@@ -32,7 +32,7 @@ const entity = {
 
 const serialized = serialize(entity, 'users', {
   relationships: ['address', 'images'],
-  changeCase: 'kebabCase',
+  changeCase: CaseType.kebabCase,
 })
 
 console.log(JSON.stringify(serialized))
@@ -78,7 +78,7 @@ console.log(JSON.stringify(serialized))
 ```js
 // examples/deserialize.js
 
-const { deserialize } = require('jsonapi-fractal')
+const { deserialize, CaseType } = require('jsonapi-fractal')
 
 const serializedData = {
   data: {
@@ -90,7 +90,7 @@ const serializedData = {
     },
   },
 }
-const entity = deserialize(serializedData, { changeCase: 'camelCase' })
+const entity = deserialize(serializedData, { changeCase: CaseType.camelCase })
 
 console.log(JSON.stringify(entity))
 
