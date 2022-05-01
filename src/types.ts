@@ -44,9 +44,15 @@ export enum CaseType {
 }
 
 export type Options<TExtraOptions = void> = {
+  /** key that should be used as the id */
   idKey?: string
+  /** map of EntityType => Fields Array, e.g. `{"users": ["name", "age"], "images": ["width"]}` */
   fields?: Record<string, string[]>
+  /** change case of the attribute keys */
   changeCase?: CaseType
+  /** if true, also apply the change for sub objects */
+  changeCaseDeep?: boolean
+  /** custom properties, that are available in the transformer */
   extra?: TExtraOptions
 }
 

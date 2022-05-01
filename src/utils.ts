@@ -1,5 +1,5 @@
 import { camelCase, snakeCase, paramCase } from 'change-case'
-import { AttributesObject, CaseType } from './types'
+import { AttributesObject, CaseType, JsonObject } from './types'
 
 type CaseFunction = (input: string) => string
 
@@ -8,8 +8,9 @@ type CaseFunction = (input: string) => string
  *
  * @param originalAttributes
  * @param caseType
+ * @param deep
  */
-export function changeCase(originalAttributes: AttributesObject, caseType: CaseType): AttributesObject {
+export function changeCase(originalAttributes: AttributesObject, caseType: CaseType, deep = false): AttributesObject {
   const caseTypes: Record<CaseType, CaseFunction> = {
     [CaseType.camelCase]: camelCase,
     [CaseType.snakeCase]: snakeCase,
@@ -25,10 +26,24 @@ export function changeCase(originalAttributes: AttributesObject, caseType: CaseT
   const parsedAttributes: AttributesObject = {}
 
   for (const key of Object.keys(originalAttributes)) {
-    parsedAttributes[caseFunction(key)] = originalAttributes[key]
+    let value = originalAttributes[key]
+
+    if (deep && value) {
+      if (Array.isArray(value)) {
+        value = value.map((value) => (isObject(value) ? changeCase(value as JsonObject, caseType, deep) : value))
+      } else if (isObject(value)) {
+        value = changeCase(value as JsonObject, caseType, deep)
+      }
+    }
+
+    parsedAttributes[caseFunction(key)] = value
   }
 
   return parsedAttributes
+}
+
+function isObject(value: unknown): boolean {
+  return Object.prototype.toString.call(value) == '[object Object]'
 }
 
 /**
