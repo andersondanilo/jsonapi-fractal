@@ -55,6 +55,7 @@ console.log(JSON.stringify(serialized))
  *           "type": "address"
  *         }
  *       },
+ *       "images": {
  *         "data": [
  *           {
  *             "id": 1,
