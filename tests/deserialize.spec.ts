@@ -65,6 +65,7 @@ describe('deserialize', () => {
           },
           links: {
             self: 'https://example.org/users/1',
+            action: 'https://example.org/action',
           },
           relationships: {
             address: {
@@ -74,7 +75,7 @@ describe('deserialize', () => {
               },
               links: {
                 self: 'https://example.org/address/1/relationships/address',
-                related: 'https://example.org/users/1/address',
+                related: 'https://example.org/address/1',
               },
             },
             images: {
@@ -104,13 +105,14 @@ describe('deserialize', () => {
         lastName: 'Doe',
         links: {
           self: 'https://example.org/users/1',
+          action: 'https://example.org/action',
         },
         address: {
           id: '1',
           street: 'Street 1',
           links: {
             self: 'https://example.org/address/1/relationships/address',
-            related: 'https://example.org/users/1/address',
+            related: 'https://example.org/address/1',
           },
         },
         images: [{ id: '1' }, { id: '2' }],

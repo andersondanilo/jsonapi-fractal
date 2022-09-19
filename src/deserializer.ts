@@ -83,6 +83,10 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
           relationReference.data.id,
           options,
         )
+        resource[relationName] = {
+          ...(resource[relationName] as Record<string, unknown>),
+          links: relationReference.links,
+        }
       }
     }
   }
