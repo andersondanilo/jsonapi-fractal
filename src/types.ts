@@ -28,7 +28,7 @@ export type ResourceIdentifierObject = {
 export type ExistingResourceObject = ResourceIdentifierObject & {
   id: string
   attributes: AttributesObject
-  links?: LinkObject | LinkObject[]
+  links?: LinkObject
   relationships?: Record<string, RelationshipObject>
 }
 
@@ -38,7 +38,7 @@ export type ResourceObject = ExistingResourceObject | NewResourceObject
 
 export type RelationshipObject = {
   data: ResourceIdentifierObject | ResourceIdentifierObject[]
-  links?: LinkObject | LinkObject[]
+  links?: LinkObject
 }
 
 export enum CaseType {

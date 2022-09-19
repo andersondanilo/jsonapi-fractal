@@ -103,7 +103,7 @@ describe('deserialize', () => {
         firstName: 'Joe',
         lastName: 'Doe',
         links: {
-          self: 'https://example.org/address/1/relationships/address',
+          self: 'https://example.org/users/1',
         },
         address: {
           id: '1',
