@@ -1,4 +1,4 @@
-import { AttributesObject, DocumentObject, ExistingResourceObject, LinkObject, Options, ResourceObject } from './types'
+import { AttributesObject, DocumentObject, ExistingResourceObject, Options, ResourceObject } from './types'
 import { changeCase } from './utils'
 
 type IncludedCache = Record<string, Record<string, unknown>>
@@ -44,7 +44,6 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
   }
 
   let attributes: AttributesObject = data.attributes || {}
-  const links: LinkObject = data.links || {}
 
   if (options.changeCase) {
     attributes = changeCase(attributes, options.changeCase, options.changeCaseDeep)
@@ -56,7 +55,7 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
   }
 
   if (data.links) {
-    resource['links'] = links
+    resource['links'] = data.links
   }
 
   if (id) {
@@ -76,17 +75,19 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
           return findJsonApiIncluded(included, includedCache, relationData.type, relationData.id, options)
         })
       } else if (relationReference && relationReference.data) {
-        resource[relationName] = findJsonApiIncluded(
+        const relationResource = findJsonApiIncluded<Record<string, unknown>, TExtraOptions>(
           included,
           includedCache,
           relationReference.data.type,
           relationReference.data.id,
           options,
         )
-        resource[relationName] = {
-          ...(resource[relationName] as Record<string, unknown>),
-          links: relationReference.links,
+
+        if (relationReference.links) {
+          relationResource.links = relationReference.links
         }
+
+        resource[relationName] = relationResource
       }
     }
   }

@@ -39,7 +39,7 @@ describe('deserialize', () => {
       ],
     }
 
-    expect(deserialize(serialized, { changeCase: CaseType.camelCase })).toEqual([
+    expect(deserialize(serialized, { changeCase: CaseType.camelCase })).toStrictEqual([
       {
         id: '1',
         firstName: 'Joe',
@@ -98,7 +98,7 @@ describe('deserialize', () => {
       ],
     }
 
-    expect(deserialize(serialized, { changeCase: CaseType.camelCase })).toEqual([
+    expect(deserialize(serialized, { changeCase: CaseType.camelCase })).toStrictEqual([
       {
         id: '1',
         firstName: 'Joe',

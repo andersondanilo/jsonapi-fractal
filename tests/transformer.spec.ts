@@ -105,7 +105,7 @@ describe('transform', () => {
       .withOptions({ idKey: '_id' })
       .serialize()
 
-    expect(entitySerialized).toEqual({
+    expect(entitySerialized).toStrictEqual({
       data: {
         type: 'users',
         id: 1,

@@ -34,6 +34,6 @@ describe('examples', () => {
     const script = new vm.Script(scriptText)
     script.runInContext(context)
 
-    expect(JSON.parse(result)).toEqual(JSON.parse(resultComment))
+    expect(JSON.parse(result)).toStrictEqual(JSON.parse(resultComment))
   })
 })

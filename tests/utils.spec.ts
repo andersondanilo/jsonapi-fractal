@@ -21,7 +21,7 @@ describe('changeCase', () => {
   })
 
   it('should deep convert keys', () => {
-    expect(changeCase(input, CaseType.kebabCase, true)).toEqual({
+    expect(changeCase(input, CaseType.kebabCase, true)).toStrictEqual({
       'first-name': 'Joe',
       'last-name': 'Doe',
       address: {

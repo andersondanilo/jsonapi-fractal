@@ -28,7 +28,7 @@ describe('serialize', () => {
   it('should do simple transformation', () => {
     const serialized = serialize(validEntity, 'users', validOptions)
 
-    expect(serialized).toEqual({
+    expect(serialized).toStrictEqual({
       data: {
         type: 'users',
         attributes: {
@@ -56,7 +56,7 @@ describe('serialize', () => {
   it('should accept undefined options', () => {
     const serialized = serialize(validEntity, 'users')
 
-    expect(serialized).toEqual(
+    expect(serialized).toStrictEqual(
       expect.objectContaining({
         data: expect.objectContaining({
           attributes: expect.objectContaining({
@@ -70,7 +70,7 @@ describe('serialize', () => {
   it('should accept empty entity', () => {
     const serialized = serialize(undefined, 'users')
 
-    expect(serialized).toEqual({
+    expect(serialized).toStrictEqual({
       // eslint-disable-next-line unicorn/no-null
       data: null,
     })
@@ -79,7 +79,7 @@ describe('serialize', () => {
   it('should accept entity array', () => {
     const serialized = serialize([validEntity], 'users')
 
-    expect(serialized).toEqual(
+    expect(serialized).toStrictEqual(
       expect.objectContaining({
         data: [
           expect.objectContaining({
@@ -99,7 +99,7 @@ describe('serialize', () => {
       },
     })
 
-    expect(serialized).toEqual({
+    expect(serialized).toStrictEqual({
       data: {
         id: 5,
         type: 'users',
