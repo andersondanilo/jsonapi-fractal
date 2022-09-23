@@ -15,17 +15,18 @@ jsonapi-fractal
 - [JsonApiFractalError](classes/JsonApiFractalError.md)
 - [Transformer](classes/Transformer.md)
 
-### JSON Type aliases
+### JSON Type Aliases
 
 - [JsonObject](README.md#jsonobject)
 
-### Other Type aliases
+### Other Type Aliases
 
 - [AttributesObject](README.md#attributesobject)
 - [Context](README.md#context)
 - [DocumentObject](README.md#documentobject)
 - [ExistingDocumentObject](README.md#existingdocumentobject)
 - [ExistingResourceObject](README.md#existingresourceobject)
+- [LinkObject](README.md#linkobject)
 - [MetaObject](README.md#metaobject)
 - [NewDocumentObject](README.md#newdocumentobject)
 - [NewResourceObject](README.md#newresourceobject)
@@ -45,7 +46,7 @@ jsonapi-fractal
 - [transform](README.md#transform)
 - [whitelist](README.md#whitelist)
 
-## JSON Type aliases
+## JSON Type Aliases
 
 ### JsonObject
 
@@ -61,7 +62,7 @@ node_modules/type-fest/source/basic.d.ts:22
 
 ___
 
-## Other Type aliases
+## Other Type Aliases
 
 ### AttributesObject
 
@@ -69,7 +70,7 @@ ___
 
 #### Defined in
 
-[src/types.ts:17](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L17)
+[src/types.ts:17](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L17)
 
 ___
 
@@ -95,7 +96,7 @@ ___
 
 #### Defined in
 
-[src/context.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/context.ts#L5)
+[src/context.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/context.ts#L5)
 
 ___
 
@@ -105,7 +106,7 @@ ___
 
 #### Defined in
 
-[src/types.ts:15](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L15)
+[src/types.ts:15](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L15)
 
 ___
 
@@ -115,17 +116,27 @@ ___
 
 #### Defined in
 
-[src/types.ts:11](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L11)
+[src/types.ts:11](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L11)
 
 ___
 
 ### ExistingResourceObject
 
-Ƭ **ExistingResourceObject**: [`ResourceIdentifierObject`](README.md#resourceidentifierobject) & { `attributes`: [`AttributesObject`](README.md#attributesobject) ; `id`: `string` ; `relationships?`: `Record`<`string`, [`RelationshipObject`](README.md#relationshipobject)\>  }
+Ƭ **ExistingResourceObject**: [`ResourceIdentifierObject`](README.md#resourceidentifierobject) & { `attributes`: [`AttributesObject`](README.md#attributesobject) ; `id`: `string` ; `links?`: [`LinkObject`](README.md#linkobject) ; `relationships?`: `Record`<`string`, [`RelationshipObject`](README.md#relationshipobject)\>  }
 
 #### Defined in
 
-[src/types.ts:26](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L26)
+[src/types.ts:28](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L28)
+
+___
+
+### LinkObject
+
+Ƭ **LinkObject**: [`JsonObject`](README.md#jsonobject)
+
+#### Defined in
+
+[src/types.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L21)
 
 ___
 
@@ -135,7 +146,7 @@ ___
 
 #### Defined in
 
-[src/types.ts:19](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L19)
+[src/types.ts:19](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L19)
 
 ___
 
@@ -145,7 +156,7 @@ ___
 
 #### Defined in
 
-[src/types.ts:13](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L13)
+[src/types.ts:13](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L13)
 
 ___
 
@@ -155,7 +166,7 @@ ___
 
 #### Defined in
 
-[src/types.ts:32](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L32)
+[src/types.ts:35](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L35)
 
 ___
 
@@ -181,7 +192,7 @@ ___
 
 #### Defined in
 
-[src/types.ts:46](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L46)
+[src/types.ts:50](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L50)
 
 ___
 
@@ -194,10 +205,11 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `data` | [`ResourceIdentifierObject`](README.md#resourceidentifierobject) \| [`ResourceIdentifierObject`](README.md#resourceidentifierobject)[] |
+| `links?` | [`LinkObject`](README.md#linkobject) |
 
 #### Defined in
 
-[src/types.ts:36](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L36)
+[src/types.ts:39](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L39)
 
 ___
 
@@ -222,7 +234,7 @@ ___
 
 #### Defined in
 
-[src/transformer.ts:24](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/transformer.ts#L24)
+[src/transformer.ts:24](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/transformer.ts#L24)
 
 ___
 
@@ -254,7 +266,7 @@ ___
 
 #### Defined in
 
-[src/transformer.ts:19](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/transformer.ts#L19)
+[src/transformer.ts:19](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/transformer.ts#L19)
 
 ___
 
@@ -271,7 +283,7 @@ ___
 
 #### Defined in
 
-[src/types.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L21)
+[src/types.ts:23](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L23)
 
 ___
 
@@ -281,7 +293,7 @@ ___
 
 #### Defined in
 
-[src/types.ts:34](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L34)
+[src/types.ts:37](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L37)
 
 ___
 
@@ -297,7 +309,7 @@ ___
 
 #### Defined in
 
-[src/types.ts:59](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L59)
+[src/types.ts:63](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L63)
 
 ___
 
@@ -314,7 +326,7 @@ ___
 
 #### Defined in
 
-[src/transformer.ts:14](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/transformer.ts#L14)
+[src/transformer.ts:14](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/transformer.ts#L14)
 
 ## Functions
 
@@ -344,7 +356,7 @@ Deserialize a JSON:API response
 
 #### Defined in
 
-[src/deserializer.ts:12](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/deserializer.ts#L12)
+[src/deserializer.ts:12](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/deserializer.ts#L12)
 
 ___
 
@@ -375,7 +387,7 @@ Serialize the entity
 
 #### Defined in
 
-[src/serializer.ts:32](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/serializer.ts#L32)
+[src/serializer.ts:32](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/serializer.ts#L32)
 
 ___
 
@@ -398,7 +410,7 @@ Create a ContextBuilder, used to configure the transformation
 
 #### Defined in
 
-[src/serializer.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/serializer.ts#L21)
+[src/serializer.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/serializer.ts#L21)
 
 ___
 
@@ -421,4 +433,4 @@ Keep only a set of fields on a given object
 
 #### Defined in
 
-[src/utils.ts:55](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/utils.ts#L55)
+[src/utils.ts:55](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/utils.ts#L55)

@@ -1,3 +1,10 @@
+## [2.2.0](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.1.0...v2.2.0) (2022-09-23)
+
+
+### Features
+
+* links deserialization ([fc0b05d](https://github.com/andersondanilo/jsonapi-fractal/commit/fc0b05de2905a6d62d3c25fd13a1633c5d4eecab))
+
 ## [2.1.0](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.0.1...v2.1.0) (2022-05-01)
 
 

@@ -4,38 +4,38 @@
 
 ## Table of contents
 
-### Enumeration members
+### Enumeration Members
 
 - [camelCase](CaseType.md#camelcase)
 - [kebabCase](CaseType.md#kebabcase)
 - [snakeCase](CaseType.md#snakecase)
 
-## Enumeration members
+## Enumeration Members
 
 ### camelCase
 
-• **camelCase** = `"camelCase"`
+• **camelCase** = ``"camelCase"``
 
 #### Defined in
 
-[src/types.ts:41](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L41)
+[src/types.ts:45](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L45)
 
 ___
 
 ### kebabCase
 
-• **kebabCase** = `"kebabCase"`
+• **kebabCase** = ``"kebabCase"``
 
 #### Defined in
 
-[src/types.ts:43](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L43)
+[src/types.ts:47](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L47)
 
 ___
 
 ### snakeCase
 
-• **snakeCase** = `"snakeCase"`
+• **snakeCase** = ``"snakeCase"``
 
 #### Defined in
 
-[src/types.ts:42](https://github.com/andersondanilo/jsonapi-fractal/blob/19282ab/src/types.ts#L42)
+[src/types.ts:46](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L46)
