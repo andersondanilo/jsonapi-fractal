@@ -1,0 +1,25 @@
+name: Coverage
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  coverage:
+    needs: [test]
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: 16.x
+    - run: npm config set timeout 600000
+    - run: npm install
+    - run: npm run build
+    - uses: paambaati/codeclimate-action@v3.0.0
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      with:
+        coverageCommand: npm run coverage
+        debug: true
