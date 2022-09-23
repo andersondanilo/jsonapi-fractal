@@ -54,6 +54,10 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
     ...attributes,
   }
 
+  if (data.links) {
+    resource['links'] = data.links
+  }
+
   if (id) {
     includedCache[data.type][id] = resource
   }
@@ -71,13 +75,19 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
           return findJsonApiIncluded(included, includedCache, relationData.type, relationData.id, options)
         })
       } else if (relationReference && relationReference.data) {
-        resource[relationName] = findJsonApiIncluded(
+        const relationResource = findJsonApiIncluded<Record<string, unknown>, TExtraOptions>(
           included,
           includedCache,
           relationReference.data.type,
           relationReference.data.id,
           options,
         )
+
+        if (relationReference.links) {
+          relationResource.links = relationReference.links
+        }
+
+        resource[relationName] = relationResource
       }
     }
   }

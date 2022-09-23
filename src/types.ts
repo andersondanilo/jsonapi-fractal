@@ -18,6 +18,8 @@ export type AttributesObject = JsonObject
 
 export type MetaObject = JsonObject
 
+export type LinkObject = JsonObject
+
 export type ResourceIdentifierObject = {
   type: string
   id: string
@@ -26,6 +28,7 @@ export type ResourceIdentifierObject = {
 export type ExistingResourceObject = ResourceIdentifierObject & {
   id: string
   attributes: AttributesObject
+  links?: LinkObject
   relationships?: Record<string, RelationshipObject>
 }
 
@@ -35,6 +38,7 @@ export type ResourceObject = ExistingResourceObject | NewResourceObject
 
 export type RelationshipObject = {
   data: ResourceIdentifierObject | ResourceIdentifierObject[]
+  links?: LinkObject
 }
 
 export enum CaseType {
