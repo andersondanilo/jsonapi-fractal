@@ -152,7 +152,7 @@ function serializeRelation<TEntity = unknown, TExtraOptions = unknown>(
       includedByType[transformer.type] = {}
     }
 
-    if (!(id in includedByType[transformer.type])) {
+    if (!Object.prototype.hasOwnProperty.call(includedByType[transformer.type], id)) {
       includedByType[transformer.type][id] = serializeEntity(
         entity,
         transformer,
