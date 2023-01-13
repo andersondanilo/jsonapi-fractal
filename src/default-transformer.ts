@@ -5,14 +5,19 @@ import { createRecordFromKeys } from './utils'
 export class DefaultTransformer<TEntity = unknown, TExtraOptions = void> extends Transformer<TEntity, TExtraOptions> {
   public readonly relationships: Record<string, RelationshipTransformerInfoFunction<TEntity, TExtraOptions>>
 
-  constructor(public type: string, relationshipNames: string[] = []) {
+  constructor(public type: string, relationships: string[] | Record<string, string> = []) {
     super()
+
+    const relationshipNames = Array.isArray(relationships) ? relationships : Object.keys(relationships)
 
     this.relationships = createRecordFromKeys(relationshipNames, (relationName: string) => {
       return (entity: TEntity): RelationshipTransformerInfo<TExtraOptions> => {
         return {
           input: entity[relationName as never] as unknown,
-          transformer: new DefaultTransformer<unknown, TExtraOptions>(relationName, []),
+          transformer: new DefaultTransformer<unknown, TExtraOptions>(
+            Array.isArray(relationships) ? relationName : relationships[relationName],
+            [],
+          ),
           included: false,
         }
       }

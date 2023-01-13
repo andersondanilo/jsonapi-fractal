@@ -109,4 +109,32 @@ describe('serialize', () => {
       },
     })
   })
+
+  it('should set relationship types appropriately', () => {
+    const serialized = serialize(validEntity, 'users', {
+      relationships: { address: 'locations' },
+    })
+
+    expect(serialized).toStrictEqual({
+      data: {
+        type: 'users',
+        attributes: {
+          firstName: 'Joe',
+          lastName: 'Doe',
+          images: [
+            { id: 'image-1', name: 'myimage1', width: 100 },
+            { id: 'image-2', name: 'myimage2', width: 100 },
+          ],
+        },
+        relationships: {
+          address: {
+            data: {
+              type: 'locations',
+              id: 'address-1',
+            },
+          },
+        },
+      },
+    })
+  })
 })
