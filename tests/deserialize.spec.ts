@@ -119,4 +119,48 @@ describe('deserialize', () => {
       },
     ])
   })
+
+  it('should change relationship name casing', () => {
+    const serialized: DocumentObject = {
+      data: [
+        {
+          type: 'users',
+          id: '1',
+          attributes: {
+            'first-name': 'Joe',
+            'last-name': 'Doe',
+          },
+          relationships: {
+            home_address: {
+              data: {
+                type: 'addr',
+                id: '1',
+              },
+            },
+          },
+        },
+      ],
+      included: [
+        {
+          type: 'addr',
+          id: '1',
+          attributes: {
+            street: 'Street 1',
+          },
+        },
+      ],
+    }
+
+    expect(deserialize(serialized, { changeCase: CaseType.camelCase })).toStrictEqual([
+      {
+        id: '1',
+        firstName: 'Joe',
+        lastName: 'Doe',
+        homeAddress: {
+          id: '1',
+          street: 'Street 1',
+        },
+      },
+    ])
+  })
 })
