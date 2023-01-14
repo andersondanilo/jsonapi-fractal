@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[src/types.ts:45](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L45)
+[src/types.ts:45](https://github.com/andersondanilo/jsonapi-fractal/blob/d8ca17f/src/types.ts#L45)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[src/types.ts:47](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L47)
+[src/types.ts:47](https://github.com/andersondanilo/jsonapi-fractal/blob/d8ca17f/src/types.ts#L47)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[src/types.ts:46](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/types.ts#L46)
+[src/types.ts:46](https://github.com/andersondanilo/jsonapi-fractal/blob/d8ca17f/src/types.ts#L46)

@@ -34,7 +34,7 @@
 
 ### constructor
 
-• **new DefaultTransformer**<`TEntity`, `TExtraOptions`\>(`type`, `relationshipNames?`)
+• **new DefaultTransformer**<`TEntity`, `TExtraOptions`\>(`type`, `relationships?`)
 
 #### Type parameters
 
@@ -48,7 +48,7 @@
 | Name | Type | Default value |
 | :------ | :------ | :------ |
 | `type` | `string` | `undefined` |
-| `relationshipNames` | `string`[] | `[]` |
+| `relationships` | `string`[] \| `Record`<`string`, `string`\> | `[]` |
 
 #### Overrides
 
@@ -56,7 +56,7 @@
 
 #### Defined in
 
-[src/default-transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/default-transformer.ts#L8)
+[src/default-transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/d8ca17f/src/default-transformer.ts#L8)
 
 ## Properties
 
@@ -70,7 +70,7 @@
 
 #### Defined in
 
-[src/default-transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/default-transformer.ts#L6)
+[src/default-transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/d8ca17f/src/default-transformer.ts#L6)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 #### Defined in
 
-[src/default-transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/default-transformer.ts#L8)
+[src/default-transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/d8ca17f/src/default-transformer.ts#L8)
 
 ## Methods
 
@@ -108,4 +108,4 @@ ___
 
 #### Defined in
 
-[src/default-transformer.ts:23](https://github.com/andersondanilo/jsonapi-fractal/blob/fc0b05d/src/default-transformer.ts#L23)
+[src/default-transformer.ts:28](https://github.com/andersondanilo/jsonapi-fractal/blob/d8ca17f/src/default-transformer.ts#L28)

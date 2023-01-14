@@ -1,3 +1,15 @@
+## [2.3.0](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.2.0...v2.3.0) (2023-01-14)
+
+
+### Features
+
+* custom relationship types ([#20](https://github.com/andersondanilo/jsonapi-fractal/issues/20)) ([70653e7](https://github.com/andersondanilo/jsonapi-fractal/commit/70653e7e618ef18b048ff7616d54ca2ddacfb76d))
+
+
+### Bug Fixes
+
+* changeCase for relation names ([#21](https://github.com/andersondanilo/jsonapi-fractal/issues/21)) ([d8ca17f](https://github.com/andersondanilo/jsonapi-fractal/commit/d8ca17f6ea3e04979131ad70e55c9bdd02f4fc88))
+
 ## [2.2.0](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.1.0...v2.2.0) (2022-09-23)
 
 
