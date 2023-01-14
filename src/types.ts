@@ -60,4 +60,6 @@ export type Options<TExtraOptions = void> = {
   extra?: TExtraOptions
 }
 
-export type SerializeOptions<TExtraOptions = void> = Options<TExtraOptions> & { relationships?: string[] }
+export type SerializeOptions<TExtraOptions = void> = Options<TExtraOptions> & {
+  relationships?: string[] | Record<string, string>
+}
