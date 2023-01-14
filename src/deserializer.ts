@@ -1,5 +1,5 @@
 import { AttributesObject, DocumentObject, ExistingResourceObject, Options, ResourceObject } from './types'
-import { changeCase } from './utils'
+import { caseTypes, changeCase } from './utils'
 
 type IncludedCache = Record<string, Record<string, unknown>>
 
@@ -70,8 +70,13 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
         continue
       }
 
+      let casedRelationName = relationName
+      if (options.changeCase) {
+        casedRelationName = caseTypes[options.changeCase](relationName)
+      }
+
       if (Array.isArray(relationReference.data)) {
-        resource[relationName] = relationReference.data.map((relationData) => {
+        resource[casedRelationName] = relationReference.data.map((relationData) => {
           return findJsonApiIncluded(included, includedCache, relationData.type, relationData.id, options)
         })
       } else if (relationReference && relationReference.data) {
@@ -87,7 +92,7 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
           relationResource.links = relationReference.links
         }
 
-        resource[relationName] = relationResource
+        resource[casedRelationName] = relationResource
       }
     }
   }

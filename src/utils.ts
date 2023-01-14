@@ -2,6 +2,11 @@ import { camelCase, snakeCase, paramCase } from 'change-case'
 import { AttributesObject, CaseType, JsonObject } from './types'
 
 type CaseFunction = (input: string) => string
+export const caseTypes: Record<CaseType, CaseFunction> = {
+  [CaseType.camelCase]: camelCase,
+  [CaseType.snakeCase]: snakeCase,
+  [CaseType.kebabCase]: paramCase,
+}
 
 /**
  * Used to change the case (e.g. captalization) of the keys of a object
@@ -11,12 +16,6 @@ type CaseFunction = (input: string) => string
  * @param deep
  */
 export function changeCase(originalAttributes: AttributesObject, caseType: CaseType, deep = false): AttributesObject {
-  const caseTypes: Record<CaseType, CaseFunction> = {
-    [CaseType.camelCase]: camelCase,
-    [CaseType.snakeCase]: snakeCase,
-    [CaseType.kebabCase]: paramCase,
-  }
-
   const caseFunction = caseTypes[caseType]
 
   if (!caseFunction) {
