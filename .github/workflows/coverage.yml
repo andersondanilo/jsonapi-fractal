@@ -6,7 +6,6 @@ on:
 
 jobs:
   coverage:
-    needs: [test]
     name: coverage
     runs-on: ubuntu-latest
     steps:
