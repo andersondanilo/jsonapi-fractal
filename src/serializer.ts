@@ -10,7 +10,7 @@ import {
   ResourceIdentifierObject,
   SerializeOptions,
 } from './types'
-import { whitelist, changeCase } from './utils'
+import { whitelist, changeCase, caseTypes } from './utils'
 import { JsonApiFractalError } from './errors'
 
 type IncludedRecord = Record<string, Record<string, ResourceObject>>
@@ -92,14 +92,19 @@ function serializeEntity<TEntity, TExtraOptions>(
       options,
     }
 
+    let casedRelation = relation
+    if (options.changeCase) {
+      casedRelation = caseTypes[options.changeCase](relation)
+    }
+
     if (Array.isArray(context.input)) {
-      relationships[relation] = {
+      relationships[casedRelation] = {
         data: context.input
           .map((inputItem) => serializeRelation({ ...context, input: inputItem }, includedByType))
           .filter((identifier) => !!identifier) as ResourceIdentifierObject[],
       }
     } else if (context.input) {
-      relationships[relation] = {
+      relationships[casedRelation] = {
         data: serializeRelation(context, includedByType) as ResourceIdentifierObject,
       }
     }
