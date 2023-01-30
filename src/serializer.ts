@@ -42,6 +42,7 @@ export function serialize<TEntity, TExtraOptions = unknown>(
     .withInput(data)
     .withTransformer(new DefaultTransformer(type, options.relationships || []))
     .withOptions(options)
+    .withIncluded(options.included ?? false)
     .serialize()
 }
 
@@ -54,8 +55,10 @@ function serializeContext<TEntity, TExtraOptions = unknown>(context: Context<TEn
   const includedByType: IncludedRecord = {}
 
   const data = Array.isArray(context.input)
-    ? context.input.map((entity) => serializeEntity(entity, context.transformer, context.options, includedByType))
-    : serializeEntity(context.input, context.transformer, context.options, includedByType)
+    ? context.input.map((entity) =>
+        serializeEntity(entity, context.transformer, context.included, context.options, includedByType),
+      )
+    : serializeEntity(context.input, context.transformer, context.included, context.options, includedByType)
 
   const included: ResourceObject[] = []
 
@@ -74,6 +77,7 @@ function serializeContext<TEntity, TExtraOptions = unknown>(context: Context<TEn
 function serializeEntity<TEntity, TExtraOptions>(
   entity: TEntity,
   transformer: Transformer<TEntity, TExtraOptions>,
+  included: boolean,
   options: Options<TExtraOptions>,
   includedByType: IncludedRecord,
 ): ResourceObject | NewResourceObject {
@@ -87,8 +91,11 @@ function serializeEntity<TEntity, TExtraOptions>(
   const relationships: Record<string, RelationshipObject> = {}
 
   for (const relation of Object.keys(transformer.relationships)) {
+    const relationshipContext = transformer.relationships[relation](entity, options)
     const context: Context<unknown, TExtraOptions> = {
-      ...transformer.relationships[relation](entity, options),
+      input: relationshipContext.input,
+      transformer: relationshipContext.transformer,
+      included: relationshipContext.included || included,
       options,
     }
 
@@ -156,6 +163,7 @@ function serializeRelation<TEntity = unknown, TExtraOptions = unknown>(
       includedByType[transformer.type][id] = serializeEntity(
         entity,
         transformer,
+        included,
         options,
         includedByType,
       ) as ResourceObject

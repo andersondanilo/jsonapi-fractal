@@ -81,7 +81,7 @@ class UserTransformer extends Transformer<User, unknown> {
 }
 
 describe('transform', () => {
-  it('included transformation', () => {
+  it('should serialize with a custom transformer and included transformation', () => {
     const entity: User = {
       _id: 1,
       firstName: 'Joe',
