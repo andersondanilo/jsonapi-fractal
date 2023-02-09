@@ -1,3 +1,11 @@
+### [2.3.1](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.3.0...v2.3.1) (2023-02-09)
+
+
+### Bug Fixes
+
+* change relationship name casing when serializing ([#35](https://github.com/andersondanilo/jsonapi-fractal/issues/35)) ([3596ea6](https://github.com/andersondanilo/jsonapi-fractal/commit/3596ea6db67b4648945b35c4baea303b5135a49a))
+* respect `withIncluded()` when using `transform()` ([#34](https://github.com/andersondanilo/jsonapi-fractal/issues/34)) ([3e0b456](https://github.com/andersondanilo/jsonapi-fractal/commit/3e0b456685a2f646fe9803c515667f67183e32fe))
+
 ## [2.3.0](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.2.0...v2.3.0) (2023-01-14)
 
 

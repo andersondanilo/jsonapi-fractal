@@ -44,7 +44,7 @@ Error.constructor
 
 #### Defined in
 
-[src/errors.ts:2](https://github.com/andersondanilo/jsonapi-fractal/blob/d8ca17f/src/errors.ts#L2)
+[src/errors.ts:2](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/errors.ts#L2)
 
 ## Properties
 
