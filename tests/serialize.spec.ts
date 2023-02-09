@@ -169,4 +169,56 @@ describe('serialize', () => {
       },
     })
   })
+
+  it('should serialize included when configured', () => {
+    const serialized = serialize(validEntity, 'users', {
+      relationships: { images: 'image_assets' },
+      included: true,
+    })
+
+    expect(serialized).toStrictEqual({
+      data: {
+        type: 'users',
+        attributes: {
+          address: {
+            id: 'address-1',
+          },
+          firstName: 'Joe',
+          lastName: 'Doe',
+        },
+        relationships: {
+          images: {
+            data: [
+              {
+                id: 'image-1',
+                type: 'image_assets',
+              },
+              {
+                id: 'image-2',
+                type: 'image_assets',
+              },
+            ],
+          },
+        },
+      },
+      included: [
+        {
+          id: 'image-1',
+          type: 'image_assets',
+          attributes: {
+            name: 'myimage1',
+            width: 100,
+          },
+        },
+        {
+          id: 'image-2',
+          type: 'image_assets',
+          attributes: {
+            name: 'myimage2',
+            width: 100,
+          },
+        },
+      ],
+    })
+  })
 })

@@ -62,4 +62,5 @@ export type Options<TExtraOptions = void> = {
 
 export type SerializeOptions<TExtraOptions = void> = Options<TExtraOptions> & {
   relationships?: string[] | Record<string, string>
+  included?: boolean
 }
