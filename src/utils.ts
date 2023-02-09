@@ -1,9 +1,9 @@
-import { camelCase, snakeCase, paramCase } from 'change-case'
+import { camelCase, snakeCase, paramCase, camelCaseTransformMerge } from 'change-case'
 import { AttributesObject, CaseType, JsonObject } from './types'
 
 type CaseFunction = (input: string) => string
 export const caseTypes: Record<CaseType, CaseFunction> = {
-  [CaseType.camelCase]: camelCase,
+  [CaseType.camelCase]: (input: string) => camelCase(input, { transform: camelCaseTransformMerge }),
   [CaseType.snakeCase]: snakeCase,
   [CaseType.kebabCase]: paramCase,
 }

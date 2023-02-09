@@ -34,4 +34,21 @@ describe('changeCase', () => {
       ],
     })
   })
+
+  it('should remove underscores before numbers in camelCase', () => {
+    const snakeInput = {
+      first_name: 'Joe',
+      last_name: 'Doe',
+      address_1: {
+        line_1: '543 Street',
+      },
+    }
+    expect(changeCase(snakeInput, CaseType.camelCase, true)).toStrictEqual({
+      firstName: 'Joe',
+      lastName: 'Doe',
+      address1: {
+        line1: '543 Street',
+      },
+    })
+  })
 })

@@ -137,4 +137,36 @@ describe('serialize', () => {
       },
     })
   })
+
+  it('should change relationship name casing', () => {
+    const serialized = serialize(
+      {
+        firstName: 'Joe',
+        lastName: 'Doe',
+        homeAddress: {
+          id: 'address-1',
+        },
+      },
+      'users',
+      { relationships: ['homeAddress'], changeCase: CaseType.snakeCase },
+    )
+
+    expect(serialized).toStrictEqual({
+      data: {
+        type: 'users',
+        attributes: {
+          first_name: 'Joe',
+          last_name: 'Doe',
+        },
+        relationships: {
+          home_address: {
+            data: {
+              type: 'homeAddress',
+              id: 'address-1',
+            },
+          },
+        },
+      },
+    })
+  })
 })
