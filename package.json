@@ -39,7 +39,7 @@
     "url": "https://github.com/andersondanilo/jsonapi-fractal/issues"
   },
   "dependencies": {
-    "change-case": "^4.1.1"
+    "change-case": "^5.4.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
