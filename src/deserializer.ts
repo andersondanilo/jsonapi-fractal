@@ -26,6 +26,8 @@ export function deserialize<TEntity, TExtraOptions = unknown>(
     : parseJsonApiSimpleResourceData(response.data, included, options, false, {})
 }
 
+export const typeField = Symbol('type')
+
 function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
   data: ResourceObject,
   included: ExistingResourceObject[],
@@ -50,6 +52,7 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
   }
 
   const resource: Record<string, unknown> = {
+    [typeField]: data.type,
     ...(id ? { id } : {}),
     ...attributes,
   }
@@ -118,7 +121,7 @@ function findJsonApiIncluded<TEntity, TExtraOptions>(
   const foundResource = included.find((item) => item.type === type && item.id === id)
 
   if (!foundResource) {
-    return { id } as unknown as TEntity
+    return { id, [typeField]: type } as unknown as TEntity
   }
 
   return parseJsonApiSimpleResourceData(foundResource, included, options, true, includedCache)
