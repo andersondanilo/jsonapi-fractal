@@ -60,6 +60,12 @@ export type Options<TExtraOptions = void> = {
   extra?: TExtraOptions
 }
 
+
+export type DeserializeOptions<TExtraOptions = void> = Options<TExtraOptions> & {
+  /** inject `type` as a symbol */
+  injectType?: boolean
+}
+
 export type SerializeOptions<TExtraOptions = void> = Options<TExtraOptions> & {
   relationships?: string[] | Record<string, string>
   included?: boolean

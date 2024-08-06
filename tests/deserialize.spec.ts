@@ -42,6 +42,18 @@ describe('deserialize', () => {
     expect(deserialize(serialized, { changeCase: CaseType.camelCase })).toStrictEqual([
       {
         id: '1',
+        firstName: 'Joe',
+        lastName: 'Doe',
+        address: {
+          id: '1',
+          street: 'Street 1',
+        },
+        images: [{ id: '1' }, { id: '2' }],
+      },
+    ])
+    expect(deserialize(serialized, { changeCase: CaseType.camelCase, injectType: true })).toStrictEqual([
+      {
+        id: '1',
         [typeField]: 'users',
         firstName: 'Joe',
         lastName: 'Doe',
@@ -106,6 +118,26 @@ describe('deserialize', () => {
     expect(deserialize(serialized, { changeCase: CaseType.camelCase })).toStrictEqual([
       {
         id: '1',
+        firstName: 'Joe',
+        lastName: 'Doe',
+        links: {
+          self: 'https://example.org/users/1',
+          action: 'https://example.org/action',
+        },
+        address: {
+          id: '1',
+          street: 'Street 1',
+          links: {
+            self: 'https://example.org/address/1/relationships/address',
+            related: 'https://example.org/address/1',
+          },
+        },
+        images: [{ id: '1' }, { id: '2' }],
+      },
+    ])
+    expect(deserialize(serialized, { changeCase: CaseType.camelCase, injectType: true })).toStrictEqual([
+      {
+        id: '1',
         [typeField]: 'users',
         firstName: 'Joe',
         lastName: 'Doe',
@@ -162,6 +194,17 @@ describe('deserialize', () => {
     }
 
     expect(deserialize(serialized, { changeCase: CaseType.camelCase })).toStrictEqual([
+      {
+        id: '1',
+        firstName: 'Joe',
+        lastName: 'Doe',
+        homeAddress: {
+          id: '1',
+          street: 'Street 1',
+        },
+      },
+    ])
+    expect(deserialize(serialized, { changeCase: CaseType.camelCase, injectType: true })).toStrictEqual([
       {
         id: '1',
         [typeField]: 'users',
