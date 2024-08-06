@@ -34,8 +34,8 @@
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type     |
+| :-------- | :------- |
 | `message` | `string` |
 
 #### Overrides
@@ -44,7 +44,7 @@ Error.constructor
 
 #### Defined in
 
-[src/errors.ts:2](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/errors.ts#L2)
+[src/errors.ts:2](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/errors.ts#L2)
 
 ## Properties
 
@@ -60,7 +60,7 @@ Error.message
 
 node_modules/typescript/lib/lib.es5.d.ts:1054
 
-___
+---
 
 ### name
 
@@ -74,7 +74,7 @@ Error.name
 
 node_modules/typescript/lib/lib.es5.d.ts:1053
 
-___
+---
 
 ### stack
 
@@ -88,7 +88,7 @@ Error.stack
 
 node_modules/typescript/lib/lib.es5.d.ts:1055
 
-___
+---
 
 ### prepareStackTrace
 
@@ -100,15 +100,13 @@ ___
 
 Optional override for formatting stack traces
 
-**`See`**
-
-https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+**`see`** https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `err` | `Error` |
+| Name          | Type         |
+| :------------ | :----------- |
+| `err`         | `Error`      |
 | `stackTraces` | `CallSite`[] |
 
 ##### Returns
@@ -121,9 +119,9 @@ Error.prepareStackTrace
 
 #### Defined in
 
-node_modules/@types/node/globals.d.ts:11
+node_modules/@types/node/globals.d.ts:27
 
-___
+---
 
 ### stackTraceLimit
 
@@ -135,7 +133,7 @@ Error.stackTraceLimit
 
 #### Defined in
 
-node_modules/@types/node/globals.d.ts:13
+node_modules/@types/node/globals.d.ts:29
 
 ## Methods
 
@@ -147,9 +145,9 @@ Create .stack property on a target object
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `targetObject` | `object` |
+| Name              | Type       |
+| :---------------- | :--------- |
+| `targetObject`    | `object`   |
 | `constructorOpt?` | `Function` |
 
 #### Returns
@@ -162,4 +160,4 @@ Error.captureStackTrace
 
 #### Defined in
 
-node_modules/@types/node/globals.d.ts:4
+node_modules/@types/node/globals.d.ts:20

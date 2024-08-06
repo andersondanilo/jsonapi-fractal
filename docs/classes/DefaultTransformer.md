@@ -4,10 +4,10 @@
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `TEntity` | `unknown` |
-| `TExtraOptions` | `void` |
+| Name            | Type      |
+| :-------------- | :-------- |
+| `TEntity`       | `unknown` |
+| `TExtraOptions` | `void`    |
 
 ## Hierarchy
 
@@ -38,17 +38,17 @@
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `TEntity` | `unknown` |
-| `TExtraOptions` | `void` |
+| Name            | Type      |
+| :-------------- | :-------- |
+| `TEntity`       | `unknown` |
+| `TExtraOptions` | `void`    |
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `type` | `string` | `undefined` |
-| `relationships` | `string`[] \| `Record`<`string`, `string`\> | `[]` |
+| Name            | Type                                        | Default value |
+| :-------------- | :------------------------------------------ | :------------ |
+| `type`          | `string`                                    | `undefined`   |
+| `relationships` | `string`[] \| `Record`<`string`, `string`\> | `[]`          |
 
 #### Overrides
 
@@ -56,7 +56,7 @@
 
 #### Defined in
 
-[src/default-transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/default-transformer.ts#L8)
+[src/default-transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/default-transformer.ts#L8)
 
 ## Properties
 
@@ -70,9 +70,9 @@
 
 #### Defined in
 
-[src/default-transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/default-transformer.ts#L6)
+[src/default-transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/default-transformer.ts#L6)
 
-___
+---
 
 ### type
 
@@ -82,10 +82,6 @@ ___
 
 [Transformer](Transformer.md).[type](Transformer.md#type)
 
-#### Defined in
-
-[src/default-transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/default-transformer.ts#L8)
-
 ## Methods
 
 ### transform
@@ -94,8 +90,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type  |
+| :------- | :---- |
 | `entity` | `any` |
 
 #### Returns
@@ -108,4 +104,4 @@ ___
 
 #### Defined in
 
-[src/default-transformer.ts:28](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/default-transformer.ts#L28)
+[src/default-transformer.ts:28](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/default-transformer.ts#L28)

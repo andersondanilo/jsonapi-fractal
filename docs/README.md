@@ -23,6 +23,7 @@ jsonapi-fractal
 
 - [AttributesObject](README.md#attributesobject)
 - [Context](README.md#context)
+- [DeserializeOptions](README.md#deserializeoptions)
 - [DocumentObject](README.md#documentobject)
 - [ExistingDocumentObject](README.md#existingdocumentobject)
 - [ExistingResourceObject](README.md#existingresourceobject)
@@ -38,6 +39,10 @@ jsonapi-fractal
 - [ResourceObject](README.md#resourceobject)
 - [SerializeOptions](README.md#serializeoptions)
 - [TransformerRelationships](README.md#transformerrelationships)
+
+### Variables
+
+- [typeField](README.md#typefield)
 
 ### Functions
 
@@ -58,9 +63,9 @@ This type can be useful to enforce some input to be JSON-compatible or as a supe
 
 #### Defined in
 
-node_modules/type-fest/source/basic.d.ts:22
+node_modules/type-fest/source/basic.d.ts:45
 
-___
+---
 
 ## Other Type Aliases
 
@@ -70,9 +75,9 @@ ___
 
 #### Defined in
 
-[src/types.ts:17](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/types.ts#L17)
+[src/types.ts:17](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L17)
 
-___
+---
 
 ### Context
 
@@ -80,25 +85,41 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `TEntity` | `TEntity` |
+| Name               | Type      |
+| :----------------- | :-------- |
+| `TEntity`          | `TEntity` |
 | `TExtraProperties` | `unknown` |
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `included` | `boolean` |
-| `input` | `TEntity` \| `undefined` |
-| `options` | [`Options`](README.md#options)<`TExtraProperties`\> |
+| Name          | Type                                                                    |
+| :------------ | :---------------------------------------------------------------------- |
+| `included`    | `boolean`                                                               |
+| `input`       | `TEntity` \| `undefined`                                                |
+| `options`     | [`Options`](README.md#options)<`TExtraProperties`\>                     |
 | `transformer` | [`Transformer`](classes/Transformer.md)<`TEntity`, `TExtraProperties`\> |
 
 #### Defined in
 
-[src/context.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/context.ts#L5)
+[src/context.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L5)
 
-___
+---
+
+### DeserializeOptions
+
+Ƭ **DeserializeOptions**<`TExtraOptions`\>: [`Options`](README.md#options)<`TExtraOptions`\> & { `injectType?`: `boolean` }
+
+#### Type parameters
+
+| Name            | Type   |
+| :-------------- | :----- |
+| `TExtraOptions` | `void` |
+
+#### Defined in
+
+[src/types.ts:64](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L64)
+
+---
 
 ### DocumentObject
 
@@ -106,9 +127,9 @@ ___
 
 #### Defined in
 
-[src/types.ts:15](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/types.ts#L15)
+[src/types.ts:15](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L15)
 
-___
+---
 
 ### ExistingDocumentObject
 
@@ -116,19 +137,19 @@ ___
 
 #### Defined in
 
-[src/types.ts:11](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/types.ts#L11)
+[src/types.ts:11](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L11)
 
-___
+---
 
 ### ExistingResourceObject
 
-Ƭ **ExistingResourceObject**: [`ResourceIdentifierObject`](README.md#resourceidentifierobject) & { `attributes`: [`AttributesObject`](README.md#attributesobject) ; `id`: `string` ; `links?`: [`LinkObject`](README.md#linkobject) ; `relationships?`: `Record`<`string`, [`RelationshipObject`](README.md#relationshipobject)\>  }
+Ƭ **ExistingResourceObject**: [`ResourceIdentifierObject`](README.md#resourceidentifierobject) & { `attributes`: [`AttributesObject`](README.md#attributesobject) ; `id`: `string` ; `links?`: [`LinkObject`](README.md#linkobject) ; `relationships?`: `Record`<`string`, [`RelationshipObject`](README.md#relationshipobject)\> }
 
 #### Defined in
 
-[src/types.ts:28](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/types.ts#L28)
+[src/types.ts:28](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L28)
 
-___
+---
 
 ### LinkObject
 
@@ -136,9 +157,9 @@ ___
 
 #### Defined in
 
-[src/types.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/types.ts#L21)
+[src/types.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L21)
 
-___
+---
 
 ### MetaObject
 
@@ -146,9 +167,9 @@ ___
 
 #### Defined in
 
-[src/types.ts:19](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/types.ts#L19)
+[src/types.ts:19](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L19)
 
-___
+---
 
 ### NewDocumentObject
 
@@ -156,19 +177,19 @@ ___
 
 #### Defined in
 
-[src/types.ts:13](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/types.ts#L13)
+[src/types.ts:13](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L13)
 
-___
+---
 
 ### NewResourceObject
 
-Ƭ **NewResourceObject**: `Omit`<[`ExistingResourceObject`](README.md#existingresourceobject), ``"id"``\>
+Ƭ **NewResourceObject**: `Omit`<[`ExistingResourceObject`](README.md#existingresourceobject), `"id"`\>
 
 #### Defined in
 
-[src/types.ts:35](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/types.ts#L35)
+[src/types.ts:35](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L35)
 
-___
+---
 
 ### Options
 
@@ -176,25 +197,25 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name            | Type   |
+| :-------------- | :----- |
 | `TExtraOptions` | `void` |
 
 #### Type declaration
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `changeCase?` | [`CaseType`](enums/CaseType.md) | change case of the attribute keys |
-| `changeCaseDeep?` | `boolean` | if true, also apply the change for sub objects |
-| `extra?` | `TExtraOptions` | custom properties, that are available in the transformer |
-| `fields?` | `Record`<`string`, `string`[]\> | map of EntityType => Fields Array, e.g. `{"users": ["name", "age"], "images": ["width"]}` |
-| `idKey?` | `string` | key that should be used as the id |
+| Name              | Type                            | Description                                                                               |
+| :---------------- | :------------------------------ | :---------------------------------------------------------------------------------------- |
+| `changeCase?`     | [`CaseType`](enums/CaseType.md) | change case of the attribute keys                                                         |
+| `changeCaseDeep?` | `boolean`                       | if true, also apply the change for sub objects                                            |
+| `extra?`          | `TExtraOptions`                 | custom properties, that are available in the transformer                                  |
+| `fields?`         | `Record`<`string`, `string`[]\> | map of EntityType => Fields Array, e.g. `{"users": ["name", "age"], "images": ["width"]}` |
+| `idKey?`          | `string`                        | key that should be used as the id                                                         |
 
 #### Defined in
 
-[src/types.ts:50](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/types.ts#L50)
+[src/types.ts:50](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L50)
 
-___
+---
 
 ### RelationshipObject
 
@@ -202,16 +223,16 @@ ___
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `data` | [`ResourceIdentifierObject`](README.md#resourceidentifierobject) \| [`ResourceIdentifierObject`](README.md#resourceidentifierobject)[] |
-| `links?` | [`LinkObject`](README.md#linkobject) |
+| Name     | Type                                                                                                                                   |
+| :------- | :------------------------------------------------------------------------------------------------------------------------------------- |
+| `data`   | [`ResourceIdentifierObject`](README.md#resourceidentifierobject) \| [`ResourceIdentifierObject`](README.md#resourceidentifierobject)[] |
+| `links?` | [`LinkObject`](README.md#linkobject)                                                                                                   |
 
 #### Defined in
 
-[src/types.ts:39](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/types.ts#L39)
+[src/types.ts:39](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L39)
 
-___
+---
 
 ### RelationshipTransformerInfo
 
@@ -219,24 +240,24 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name            | Type            |
+| :-------------- | :-------------- |
 | `TExtraOptions` | `TExtraOptions` |
-| `T` | `unknown` |
+| `T`             | `unknown`       |
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `included` | `boolean` |
-| `input` | `T` |
+| Name          | Type                                                           |
+| :------------ | :------------------------------------------------------------- |
+| `included`    | `boolean`                                                      |
+| `input`       | `T`                                                            |
 | `transformer` | [`Transformer`](classes/Transformer.md)<`T`, `TExtraOptions`\> |
 
 #### Defined in
 
-[src/transformer.ts:24](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/transformer.ts#L24)
+[src/transformer.ts:24](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/transformer.ts#L24)
 
-___
+---
 
 ### RelationshipTransformerInfoFunction
 
@@ -244,9 +265,9 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `TEntity` |
+| Name            |
+| :-------------- |
+| `TEntity`       |
 | `TExtraOptions` |
 
 #### Type declaration
@@ -255,9 +276,9 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `entity` | `TEntity` |
+| Name      | Type                                             |
+| :-------- | :----------------------------------------------- |
+| `entity`  | `TEntity`                                        |
 | `options` | [`Options`](README.md#options)<`TExtraOptions`\> |
 
 ##### Returns
@@ -266,9 +287,9 @@ ___
 
 #### Defined in
 
-[src/transformer.ts:19](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/transformer.ts#L19)
+[src/transformer.ts:19](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/transformer.ts#L19)
 
-___
+---
 
 ### ResourceIdentifierObject
 
@@ -276,16 +297,16 @@ ___
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `id` | `string` |
+| Name   | Type     |
+| :----- | :------- |
+| `id`   | `string` |
 | `type` | `string` |
 
 #### Defined in
 
-[src/types.ts:23](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/types.ts#L23)
+[src/types.ts:23](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L23)
 
-___
+---
 
 ### ResourceObject
 
@@ -293,25 +314,25 @@ ___
 
 #### Defined in
 
-[src/types.ts:37](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/types.ts#L37)
+[src/types.ts:37](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L37)
 
-___
+---
 
 ### SerializeOptions
 
-Ƭ **SerializeOptions**<`TExtraOptions`\>: [`Options`](README.md#options)<`TExtraOptions`\> & { `included?`: `boolean` ; `relationships?`: `string`[] \| `Record`<`string`, `string`\>  }
+Ƭ **SerializeOptions**<`TExtraOptions`\>: [`Options`](README.md#options)<`TExtraOptions`\> & { `included?`: `boolean` ; `relationships?`: `string`[] \| `Record`<`string`, `string`\> }
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name            | Type   |
+| :-------------- | :----- |
 | `TExtraOptions` | `void` |
 
 #### Defined in
 
-[src/types.ts:63](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/types.ts#L63)
+[src/types.ts:69](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L69)
 
-___
+---
 
 ### TransformerRelationships
 
@@ -319,14 +340,24 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `TEntity` |
+| Name            |
+| :-------------- |
+| `TEntity`       |
 | `TExtraOptions` |
 
 #### Defined in
 
-[src/transformer.ts:14](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/transformer.ts#L14)
+[src/transformer.ts:14](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/transformer.ts#L14)
+
+## Variables
+
+### typeField
+
+• `Const` **typeField**: typeof [`typeField`](README.md#typefield)
+
+#### Defined in
+
+[src/deserializer.ts:29](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/deserializer.ts#L29)
 
 ## Functions
 
@@ -338,17 +369,17 @@ Deserialize a JSON:API response
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `TEntity` | `TEntity` |
+| Name            | Type      |
+| :-------------- | :-------- |
+| `TEntity`       | `TEntity` |
 | `TExtraOptions` | `unknown` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `response` | [`DocumentObject`](README.md#documentobject) |
-| `options` | [`Options`](README.md#options)<`TExtraOptions`\> |
+| Name       | Type                                                                   |
+| :--------- | :--------------------------------------------------------------------- |
+| `response` | [`DocumentObject`](README.md#documentobject)                           |
+| `options`  | [`DeserializeOptions`](README.md#deserializeoptions)<`TExtraOptions`\> |
 
 #### Returns
 
@@ -356,9 +387,9 @@ Deserialize a JSON:API response
 
 #### Defined in
 
-[src/deserializer.ts:12](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/deserializer.ts#L12)
+[src/deserializer.ts:12](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/deserializer.ts#L12)
 
-___
+---
 
 ### serialize
 
@@ -368,17 +399,17 @@ Serialize the entity
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `TEntity` | `TEntity` |
+| Name            | Type      |
+| :-------------- | :-------- |
+| `TEntity`       | `TEntity` |
 | `TExtraOptions` | `unknown` |
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `data` | `TEntity` | entity to be serialized |
-| `type` | `string` | type of the entity |
+| Name       | Type                                                               | Description                       |
+| :--------- | :----------------------------------------------------------------- | :-------------------------------- |
+| `data`     | `TEntity`                                                          | entity to be serialized           |
+| `type`     | `string`                                                           | type of the entity                |
 | `options?` | [`SerializeOptions`](README.md#serializeoptions)<`TExtraOptions`\> | options used in the serialization |
 
 #### Returns
@@ -387,9 +418,9 @@ Serialize the entity
 
 #### Defined in
 
-[src/serializer.ts:32](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/serializer.ts#L32)
+[src/serializer.ts:32](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/serializer.ts#L32)
 
-___
+---
 
 ### transform
 
@@ -399,9 +430,9 @@ Create a ContextBuilder, used to configure the transformation
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `TEntity` | `TEntity` |
+| Name            | Type      |
+| :-------------- | :-------- |
+| `TEntity`       | `TEntity` |
 | `TExtraOptions` | `unknown` |
 
 #### Returns
@@ -410,9 +441,9 @@ Create a ContextBuilder, used to configure the transformation
 
 #### Defined in
 
-[src/serializer.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/serializer.ts#L21)
+[src/serializer.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/serializer.ts#L21)
 
-___
+---
 
 ### whitelist
 
@@ -422,10 +453,10 @@ Keep only a set of fields on a given object
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `unknown` |
-| `list` | `string`[] |
+| Name     | Type       |
+| :------- | :--------- |
+| `object` | `unknown`  |
+| `list`   | `string`[] |
 
 #### Returns
 
@@ -433,4 +464,4 @@ Keep only a set of fields on a given object
 
 #### Defined in
 
-[src/utils.ts:54](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/utils.ts#L54)
+[src/utils.ts:54](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/utils.ts#L54)

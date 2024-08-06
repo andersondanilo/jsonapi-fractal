@@ -4,9 +4,9 @@
 
 ## Type parameters
 
-| Name |
-| :------ |
-| `TEntity` |
+| Name            |
+| :-------------- |
+| `TEntity`       |
 | `TExtraOptions` |
 
 ## Hierarchy
@@ -38,14 +38,14 @@
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `TEntity` |
+| Name            |
+| :-------------- |
+| `TEntity`       |
 | `TExtraOptions` |
 
 #### Defined in
 
-[src/transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/transformer.ts#L8)
+[src/transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/transformer.ts#L8)
 
 ## Properties
 
@@ -55,9 +55,9 @@
 
 #### Defined in
 
-[src/transformer.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/transformer.ts#L5)
+[src/transformer.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/transformer.ts#L5)
 
-___
+---
 
 ### type
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[src/transformer.ts:4](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/transformer.ts#L4)
+[src/transformer.ts:4](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/transformer.ts#L4)
 
 ## Methods
 
@@ -75,9 +75,9 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `entity` | `TEntity` |
+| Name      | Type                                                |
+| :-------- | :-------------------------------------------------- |
+| `entity`  | `TEntity`                                           |
 | `options` | [`Options`](../README.md#options)<`TExtraOptions`\> |
 
 #### Returns
@@ -86,4 +86,4 @@ ___
 
 #### Defined in
 
-[src/transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/transformer.ts#L6)
+[src/transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/transformer.ts#L6)

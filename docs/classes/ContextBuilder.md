@@ -4,9 +4,9 @@
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `TEntity` | `TEntity` |
+| Name               | Type      |
+| :----------------- | :-------- |
+| `TEntity`          | `TEntity` |
 | `TExtraProperties` | `unknown` |
 
 ## Table of contents
@@ -40,20 +40,20 @@
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `TEntity` | `TEntity` |
+| Name               | Type      |
+| :----------------- | :-------- |
+| `TEntity`          | `TEntity` |
 | `TExtraProperties` | `unknown` |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name             | Type                                                                                                                        |
+| :--------------- | :-------------------------------------------------------------------------------------------------------------------------- |
 | `renderFunction` | (`c`: [`Context`](../README.md#context)<`TEntity`, `TExtraProperties`\>) => [`DocumentObject`](../README.md#documentobject) |
 
 #### Defined in
 
-[src/context.ts:18](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/context.ts#L18)
+[src/context.ts:18](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L18)
 
 ## Properties
 
@@ -63,9 +63,9 @@
 
 #### Defined in
 
-[src/context.ts:15](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/context.ts#L15)
+[src/context.ts:15](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L15)
 
-___
+---
 
 ### input
 
@@ -73,9 +73,9 @@ ___
 
 #### Defined in
 
-[src/context.ts:13](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/context.ts#L13)
+[src/context.ts:13](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L13)
 
-___
+---
 
 ### options
 
@@ -83,9 +83,9 @@ ___
 
 #### Defined in
 
-[src/context.ts:16](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/context.ts#L16)
+[src/context.ts:16](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L16)
 
-___
+---
 
 ### renderFunction
 
@@ -97,19 +97,15 @@ ___
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `c` | [`Context`](../README.md#context)<`TEntity`, `TExtraProperties`\> |
+| Name | Type                                                              |
+| :--- | :---------------------------------------------------------------- |
+| `c`  | [`Context`](../README.md#context)<`TEntity`, `TExtraProperties`\> |
 
 ##### Returns
 
 [`DocumentObject`](../README.md#documentobject)
 
-#### Defined in
-
-[src/context.ts:18](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/context.ts#L18)
-
-___
+---
 
 ### transformer
 
@@ -117,7 +113,7 @@ ___
 
 #### Defined in
 
-[src/context.ts:14](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/context.ts#L14)
+[src/context.ts:14](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L14)
 
 ## Methods
 
@@ -131,9 +127,9 @@ ___
 
 #### Defined in
 
-[src/context.ts:60](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/context.ts#L60)
+[src/context.ts:60](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L60)
 
-___
+---
 
 ### toContext
 
@@ -145,9 +141,9 @@ ___
 
 #### Defined in
 
-[src/context.ts:43](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/context.ts#L43)
+[src/context.ts:43](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L43)
 
-___
+---
 
 ### withIncluded
 
@@ -155,8 +151,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name       | Type      |
+| :--------- | :-------- |
 | `included` | `boolean` |
 
 #### Returns
@@ -165,9 +161,9 @@ ___
 
 #### Defined in
 
-[src/context.ts:31](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/context.ts#L31)
+[src/context.ts:31](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L31)
 
-___
+---
 
 ### withInput
 
@@ -175,8 +171,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type      |
+| :------ | :-------- |
 | `input` | `TEntity` |
 
 #### Returns
@@ -185,9 +181,9 @@ ___
 
 #### Defined in
 
-[src/context.ts:20](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/context.ts#L20)
+[src/context.ts:20](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L20)
 
-___
+---
 
 ### withOptions
 
@@ -195,8 +191,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type                                                   |
+| :-------- | :----------------------------------------------------- |
 | `options` | [`Options`](../README.md#options)<`TExtraProperties`\> |
 
 #### Returns
@@ -205,9 +201,9 @@ ___
 
 #### Defined in
 
-[src/context.ts:37](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/context.ts#L37)
+[src/context.ts:37](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L37)
 
-___
+---
 
 ### withTransformer
 
@@ -215,8 +211,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name          | Type                                                            |
+| :------------ | :-------------------------------------------------------------- |
 | `transformer` | [`Transformer`](Transformer.md)<`TEntity`, `TExtraProperties`\> |
 
 #### Returns
@@ -225,4 +221,4 @@ ___
 
 #### Defined in
 
-[src/context.ts:25](https://github.com/andersondanilo/jsonapi-fractal/blob/9e4f6c2/src/context.ts#L25)
+[src/context.ts:25](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L25)
