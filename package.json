@@ -54,7 +54,7 @@
     "acorn": "^8.7.0",
     "conventional-changelog-conventionalcommits": "^4.6.3",
     "embedme": "^1.22.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jsdoc": "^39.2.9",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-unicorn": "^42.0.0",
