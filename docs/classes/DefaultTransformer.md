@@ -23,6 +23,7 @@
 
 ### Properties
 
+- [options](DefaultTransformer.md#options)
 - [relationships](DefaultTransformer.md#relationships)
 - [type](DefaultTransformer.md#type)
 
@@ -56,9 +57,19 @@
 
 #### Defined in
 
-[src/default-transformer.ts:8](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/default-transformer.ts#L8)
+[src/default-transformer.ts:9](https://github.com/andersondanilo/jsonapi-fractal/blob/5f3ab68/src/default-transformer.ts#L9)
 
 ## Properties
+
+### options
+
+• `Optional` `Readonly` **options**: [`Options`](../README.md#options)<`TExtraOptions`\>
+
+#### Defined in
+
+[src/default-transformer.ts:7](https://github.com/andersondanilo/jsonapi-fractal/blob/5f3ab68/src/default-transformer.ts#L7)
+
+---
 
 ### relationships
 
@@ -70,7 +81,7 @@
 
 #### Defined in
 
-[src/default-transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/default-transformer.ts#L6)
+[src/default-transformer.ts:6](https://github.com/andersondanilo/jsonapi-fractal/blob/5f3ab68/src/default-transformer.ts#L6)
 
 ---
 
@@ -104,4 +115,4 @@
 
 #### Defined in
 
-[src/default-transformer.ts:28](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/default-transformer.ts#L28)
+[src/default-transformer.ts:29](https://github.com/andersondanilo/jsonapi-fractal/blob/5f3ab68/src/default-transformer.ts#L29)

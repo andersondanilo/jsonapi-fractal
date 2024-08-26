@@ -1,4 +1,4 @@
-import { serialize } from '../src'
+import { JsonApiFractalError, serialize } from '../src'
 import { CaseType, SerializeOptions } from '../src/types'
 
 describe('serialize', () => {
@@ -74,6 +74,46 @@ describe('serialize', () => {
       // eslint-disable-next-line unicorn/no-null
       data: null,
     })
+  })
+
+  it('should accept and match a typeKey', () => {
+    const serialized = serialize({ ...validEntity, type: 'users' }, 'users', { ...validOptions, typeKey: 'type' })
+
+    expect(serialized).toStrictEqual({
+      data: {
+        type: 'users',
+        attributes: {
+          'first-name': 'Joe',
+          'last-name': 'Doe',
+        },
+        relationships: {
+          address: {
+            data: {
+              type: 'address',
+              id: 'address-1',
+            },
+          },
+          images: {
+            data: [
+              { type: 'images', id: 'image-1' },
+              { type: 'images', id: 'image-2' },
+            ],
+          },
+        },
+      },
+    })
+  })
+
+  it('should throw if the typeKey doesn’t match the type written', () => {
+    const getSerialized = () => serialize({ ...validEntity, type: 'user' }, 'users', { ...validOptions, typeKey: 'type' })
+
+    expect(getSerialized).toThrowError(new JsonApiFractalError('typeKey and type must be the same'))
+  })
+
+  it('should throw if the typeKey and idKey are the same', () => {
+    const getSerialized = () => serialize({ ...validEntity, type: 'users' }, 'users', { ...validOptions, typeKey: 'type', idKey: 'type' })
+
+    expect(getSerialized).toThrowError(new JsonApiFractalError('idKey and typeKey must be different'))
   })
 
   it('should accept entity array', () => {

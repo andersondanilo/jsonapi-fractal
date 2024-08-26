@@ -1,9 +1,10 @@
 import { RelationshipTransformerInfo, RelationshipTransformerInfoFunction, Transformer } from './transformer'
-import { AttributesObject } from './types'
+import { AttributesObject, Options } from './types'
 import { createRecordFromKeys } from './utils'
 
 export class DefaultTransformer<TEntity = unknown, TExtraOptions = void> extends Transformer<TEntity, TExtraOptions> {
   public readonly relationships: Record<string, RelationshipTransformerInfoFunction<TEntity, TExtraOptions>>
+  public readonly options?: Options<TExtraOptions>
 
   constructor(public type: string, relationships: string[] | Record<string, string> = []) {
     super()
@@ -27,6 +28,10 @@ export class DefaultTransformer<TEntity = unknown, TExtraOptions = void> extends
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   transform(entity: any): AttributesObject {
     const attributes = { ...entity }
+
+    if (this.options && this.options.typeKey) {
+      delete attributes[this.options.typeKey]
+    }
 
     for (const relationship in this.relationships) {
       delete attributes[relationship]

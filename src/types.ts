@@ -50,6 +50,8 @@ export enum CaseType {
 export type Options<TExtraOptions = void> = {
   /** key that should be used as the id */
   idKey?: string
+  /** key that should be used as the type */
+  typeKey?: string
   /** map of EntityType => Fields Array, e.g. `{"users": ["name", "age"], "images": ["width"]}` */
   fields?: Record<string, string[]>
   /** change case of the attribute keys */
@@ -60,11 +62,6 @@ export type Options<TExtraOptions = void> = {
   extra?: TExtraOptions
 }
 
-
-export type DeserializeOptions<TExtraOptions = void> = Options<TExtraOptions> & {
-  /** key that should be used as the type */
-  typeKey?: string
-}
 
 export type SerializeOptions<TExtraOptions = void> = Options<TExtraOptions> & {
   relationships?: string[] | Record<string, string>

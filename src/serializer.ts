@@ -38,6 +38,15 @@ export function serialize<TEntity, TExtraOptions = unknown>(
     options = {} as SerializeOptions<TExtraOptions>
   }
 
+  if (options.typeKey) {
+    if (options.idKey === options.typeKey) {
+      throw new JsonApiFractalError('idKey and typeKey must be different')
+    }
+    if ((data as any)[options.typeKey] !== type) {
+      throw new JsonApiFractalError('typeKey and type must be the same')
+    }
+  }
+
   return transform()
     .withInput(data)
     .withTransformer(new DefaultTransformer(type, options.relationships || []))
@@ -83,10 +92,14 @@ function serializeEntity<TEntity, TExtraOptions>(
 ): ResourceObject | NewResourceObject {
   let attributes = { ...transformer.transform(entity, options) }
   const idKey = options.idKey || 'id'
+  const baseKey = options.typeKey;
   const id: string | undefined =
     (attributes[idKey] as string) || (entity as unknown as Record<string, string>)[idKey] || undefined
 
   delete attributes[idKey]
+  if (baseKey) {
+    delete attributes[baseKey]
+  }
 
   const relationships: Record<string, RelationshipObject> = {}
 

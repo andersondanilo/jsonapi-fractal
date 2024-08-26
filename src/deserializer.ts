@@ -1,4 +1,4 @@
-import { AttributesObject, DocumentObject, ExistingResourceObject, DeserializeOptions, ResourceObject } from './types'
+import { AttributesObject, DocumentObject, ExistingResourceObject, Options, ResourceObject } from './types'
 import { caseTypes, changeCase } from './utils'
 
 type IncludedCache = Record<string, Record<string, unknown>>
@@ -11,7 +11,7 @@ type IncludedCache = Record<string, Record<string, unknown>>
  */
 export function deserialize<TEntity, TExtraOptions = unknown>(
   response: DocumentObject,
-  options: DeserializeOptions<TExtraOptions> = {},
+  options: Options<TExtraOptions> = {},
 ): TEntity | TEntity[] | undefined {
   if (!response.data) {
     return undefined
@@ -29,7 +29,7 @@ export function deserialize<TEntity, TExtraOptions = unknown>(
 function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
   data: ResourceObject,
   included: ExistingResourceObject[],
-  options: DeserializeOptions<TExtraOptions>,
+  options: Options<TExtraOptions>,
   useCache: boolean,
   includedCache: IncludedCache,
 ): TEntity {
@@ -114,7 +114,7 @@ function findJsonApiIncluded<TEntity, TExtraOptions>(
   includedCache: IncludedCache,
   type: string,
   id: string,
-  options: DeserializeOptions<TExtraOptions>,
+  options: Options<TExtraOptions>,
 ): TEntity {
   const foundResource = included.find((item) => item.type === type && item.id === id)
 
