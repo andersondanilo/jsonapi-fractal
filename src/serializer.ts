@@ -42,7 +42,8 @@ export function serialize<TEntity, TExtraOptions = unknown>(
     if (options.idKey === options.typeKey) {
       throw new JsonApiFractalError('idKey and typeKey must be different')
     }
-    if ((data as any)[options.typeKey] !== type) {
+    const typeFromTypeKey = (data as any)[options.typeKey]
+    if (typeFromTypeKey && typeFromTypeKey !== type) {
       throw new JsonApiFractalError('typeKey and type must be the same')
     }
   }

@@ -110,6 +110,34 @@ describe('serialize', () => {
     expect(getSerialized).toThrowError(new JsonApiFractalError('typeKey and type must be the same'))
   })
 
+  it('shouldn’t throw if the typeKey doesn’t match the type written, but typeKey isn’t present', () => {
+    const serialized = serialize(validEntity, 'users', { ...validOptions, typeKey: 'type' })
+
+    expect(serialized).toStrictEqual({
+      data: {
+        type: 'users',
+        attributes: {
+          'first-name': 'Joe',
+          'last-name': 'Doe',
+        },
+        relationships: {
+          address: {
+            data: {
+              type: 'address',
+              id: 'address-1',
+            },
+          },
+          images: {
+            data: [
+              { type: 'images', id: 'image-1' },
+              { type: 'images', id: 'image-2' },
+            ],
+          },
+        },
+      },
+    })
+  })
+
   it('should throw if the typeKey and idKey are the same', () => {
     const getSerialized = () => serialize({ ...validEntity, type: 'users' }, 'users', { ...validOptions, typeKey: 'type', idKey: 'type' })
 
