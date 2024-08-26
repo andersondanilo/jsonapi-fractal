@@ -15,11 +15,11 @@ jsonapi-fractal
 - [JsonApiFractalError](classes/JsonApiFractalError.md)
 - [Transformer](classes/Transformer.md)
 
-### JSON Type Aliases
+### JSON Type aliases
 
 - [JsonObject](README.md#jsonobject)
 
-### Other Type Aliases
+### Other Type aliases
 
 - [AttributesObject](README.md#attributesobject)
 - [Context](README.md#context)
@@ -40,10 +40,6 @@ jsonapi-fractal
 - [SerializeOptions](README.md#serializeoptions)
 - [TransformerRelationships](README.md#transformerrelationships)
 
-### Variables
-
-- [typeField](README.md#typefield)
-
 ### Functions
 
 - [deserialize](README.md#deserialize)
@@ -51,7 +47,7 @@ jsonapi-fractal
 - [transform](README.md#transform)
 - [whitelist](README.md#whitelist)
 
-## JSON Type Aliases
+## JSON Type aliases
 
 ### JsonObject
 
@@ -67,7 +63,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 ---
 
-## Other Type Aliases
+## Other Type aliases
 
 ### AttributesObject
 
@@ -75,7 +71,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:17](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L17)
+[src/types.ts:17](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L17)
 
 ---
 
@@ -101,13 +97,13 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/context.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L5)
+[src/context.ts:5](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/context.ts#L5)
 
 ---
 
 ### DeserializeOptions
 
-Ƭ **DeserializeOptions**<`TExtraOptions`\>: [`Options`](README.md#options)<`TExtraOptions`\> & { `injectType?`: `boolean` }
+Ƭ **DeserializeOptions**<`TExtraOptions`\>: [`Options`](README.md#options)<`TExtraOptions`\> & { `typeKey?`: `string` }
 
 #### Type parameters
 
@@ -117,7 +113,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:64](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L64)
+[src/types.ts:64](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L64)
 
 ---
 
@@ -127,7 +123,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:15](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L15)
+[src/types.ts:15](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L15)
 
 ---
 
@@ -137,7 +133,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:11](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L11)
+[src/types.ts:11](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L11)
 
 ---
 
@@ -147,7 +143,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:28](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L28)
+[src/types.ts:28](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L28)
 
 ---
 
@@ -157,7 +153,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L21)
+[src/types.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L21)
 
 ---
 
@@ -167,7 +163,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:19](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L19)
+[src/types.ts:19](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L19)
 
 ---
 
@@ -177,7 +173,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:13](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L13)
+[src/types.ts:13](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L13)
 
 ---
 
@@ -187,7 +183,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:35](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L35)
+[src/types.ts:35](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L35)
 
 ---
 
@@ -213,7 +209,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:50](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L50)
+[src/types.ts:50](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L50)
 
 ---
 
@@ -230,7 +226,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:39](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L39)
+[src/types.ts:39](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L39)
 
 ---
 
@@ -255,7 +251,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/transformer.ts:24](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/transformer.ts#L24)
+[src/transformer.ts:24](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/transformer.ts#L24)
 
 ---
 
@@ -287,7 +283,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/transformer.ts:19](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/transformer.ts#L19)
+[src/transformer.ts:19](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/transformer.ts#L19)
 
 ---
 
@@ -304,7 +300,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:23](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L23)
+[src/types.ts:23](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L23)
 
 ---
 
@@ -314,7 +310,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:37](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L37)
+[src/types.ts:37](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L37)
 
 ---
 
@@ -330,7 +326,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/types.ts:69](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/types.ts#L69)
+[src/types.ts:69](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/types.ts#L69)
 
 ---
 
@@ -347,17 +343,7 @@ node_modules/type-fest/source/basic.d.ts:45
 
 #### Defined in
 
-[src/transformer.ts:14](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/transformer.ts#L14)
-
-## Variables
-
-### typeField
-
-• `Const` **typeField**: typeof [`typeField`](README.md#typefield)
-
-#### Defined in
-
-[src/deserializer.ts:29](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/deserializer.ts#L29)
+[src/transformer.ts:14](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/transformer.ts#L14)
 
 ## Functions
 
@@ -387,7 +373,7 @@ Deserialize a JSON:API response
 
 #### Defined in
 
-[src/deserializer.ts:12](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/deserializer.ts#L12)
+[src/deserializer.ts:12](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/deserializer.ts#L12)
 
 ---
 
@@ -418,7 +404,7 @@ Serialize the entity
 
 #### Defined in
 
-[src/serializer.ts:32](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/serializer.ts#L32)
+[src/serializer.ts:32](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/serializer.ts#L32)
 
 ---
 
@@ -441,7 +427,7 @@ Create a ContextBuilder, used to configure the transformation
 
 #### Defined in
 
-[src/serializer.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/serializer.ts#L21)
+[src/serializer.ts:21](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/serializer.ts#L21)
 
 ---
 
@@ -464,4 +450,4 @@ Keep only a set of fields on a given object
 
 #### Defined in
 
-[src/utils.ts:54](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/utils.ts#L54)
+[src/utils.ts:54](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/utils.ts#L54)

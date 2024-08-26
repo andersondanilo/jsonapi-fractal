@@ -62,8 +62,8 @@ export type Options<TExtraOptions = void> = {
 
 
 export type DeserializeOptions<TExtraOptions = void> = Options<TExtraOptions> & {
-  /** inject `type` as a symbol */
-  injectType?: boolean
+  /** key that should be used as the type */
+  typeKey?: string
 }
 
 export type SerializeOptions<TExtraOptions = void> = Options<TExtraOptions> & {

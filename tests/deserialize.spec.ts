@@ -1,4 +1,4 @@
-import { deserialize, typeField, DocumentObject } from '../src'
+import { deserialize, DocumentObject } from '../src'
 import { CaseType } from '../src/types'
 
 describe('deserialize', () => {
@@ -51,20 +51,37 @@ describe('deserialize', () => {
         images: [{ id: '1' }, { id: '2' }],
       },
     ])
-    expect(deserialize(serialized, { changeCase: CaseType.camelCase, injectType: true })).toStrictEqual([
+    expect(deserialize(serialized, { changeCase: CaseType.camelCase, typeKey: 'type' })).toStrictEqual([
       {
         id: '1',
-        [typeField]: 'users',
+        type: 'users',
         firstName: 'Joe',
         lastName: 'Doe',
         address: {
           id: '1',
-          [typeField]: 'addr',
+          type: 'addr',
           street: 'Street 1',
         },
         images: [
-          { id: '1', [typeField]: 'img' },
-          { id: '2', [typeField]: 'img' },
+          { id: '1', type: 'img' },
+          { id: '2', type: 'img' },
+        ],
+      },
+    ])
+    expect(deserialize(serialized, { changeCase: CaseType.camelCase, typeKey: 'foo' })).toStrictEqual([
+      {
+        id: '1',
+        foo: 'users',
+        firstName: 'Joe',
+        lastName: 'Doe',
+        address: {
+          id: '1',
+          foo: 'addr',
+          street: 'Street 1',
+        },
+        images: [
+          { id: '1', foo: 'img' },
+          { id: '2', foo: 'img' },
         ],
       },
     ])
@@ -135,10 +152,10 @@ describe('deserialize', () => {
         images: [{ id: '1' }, { id: '2' }],
       },
     ])
-    expect(deserialize(serialized, { changeCase: CaseType.camelCase, injectType: true })).toStrictEqual([
+    expect(deserialize(serialized, { changeCase: CaseType.camelCase, typeKey: 'type' })).toStrictEqual([
       {
         id: '1',
-        [typeField]: 'users',
+        type: 'users',
         firstName: 'Joe',
         lastName: 'Doe',
         links: {
@@ -147,7 +164,7 @@ describe('deserialize', () => {
         },
         address: {
           id: '1',
-          [typeField]: 'addr',
+          type: 'addr',
           street: 'Street 1',
           links: {
             self: 'https://example.org/address/1/relationships/address',
@@ -155,8 +172,8 @@ describe('deserialize', () => {
           },
         },
         images: [
-          { id: '1', [typeField]: 'img' },
-          { id: '2', [typeField]: 'img' },
+          { id: '1', type: 'img' },
+          { id: '2', type: 'img' },
         ],
       },
     ])
@@ -204,15 +221,15 @@ describe('deserialize', () => {
         },
       },
     ])
-    expect(deserialize(serialized, { changeCase: CaseType.camelCase, injectType: true })).toStrictEqual([
+    expect(deserialize(serialized, { changeCase: CaseType.camelCase, typeKey: 'type' })).toStrictEqual([
       {
         id: '1',
-        [typeField]: 'users',
+        type: 'users',
         firstName: 'Joe',
         lastName: 'Doe',
         homeAddress: {
           id: '1',
-          [typeField]: 'addr',
+          type: 'addr',
           street: 'Street 1',
         },
       },

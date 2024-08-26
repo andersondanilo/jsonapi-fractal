@@ -53,7 +53,7 @@
 
 #### Defined in
 
-[src/context.ts:18](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L18)
+[src/context.ts:18](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/context.ts#L18)
 
 ## Properties
 
@@ -63,7 +63,7 @@
 
 #### Defined in
 
-[src/context.ts:15](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L15)
+[src/context.ts:15](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/context.ts#L15)
 
 ---
 
@@ -73,7 +73,7 @@
 
 #### Defined in
 
-[src/context.ts:13](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L13)
+[src/context.ts:13](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/context.ts#L13)
 
 ---
 
@@ -83,7 +83,7 @@
 
 #### Defined in
 
-[src/context.ts:16](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L16)
+[src/context.ts:16](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/context.ts#L16)
 
 ---
 
@@ -113,7 +113,7 @@
 
 #### Defined in
 
-[src/context.ts:14](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L14)
+[src/context.ts:14](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/context.ts#L14)
 
 ## Methods
 
@@ -127,7 +127,7 @@
 
 #### Defined in
 
-[src/context.ts:60](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L60)
+[src/context.ts:60](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/context.ts#L60)
 
 ---
 
@@ -141,7 +141,7 @@
 
 #### Defined in
 
-[src/context.ts:43](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L43)
+[src/context.ts:43](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/context.ts#L43)
 
 ---
 
@@ -161,7 +161,7 @@
 
 #### Defined in
 
-[src/context.ts:31](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L31)
+[src/context.ts:31](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/context.ts#L31)
 
 ---
 
@@ -181,7 +181,7 @@
 
 #### Defined in
 
-[src/context.ts:20](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L20)
+[src/context.ts:20](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/context.ts#L20)
 
 ---
 
@@ -201,7 +201,7 @@
 
 #### Defined in
 
-[src/context.ts:37](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L37)
+[src/context.ts:37](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/context.ts#L37)
 
 ---
 
@@ -221,4 +221,4 @@
 
 #### Defined in
 
-[src/context.ts:25](https://github.com/andersondanilo/jsonapi-fractal/blob/43f9c51/src/context.ts#L25)
+[src/context.ts:25](https://github.com/andersondanilo/jsonapi-fractal/blob/dec09c6/src/context.ts#L25)
