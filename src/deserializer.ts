@@ -2,6 +2,7 @@ import { AttributesObject, DocumentObject, ExistingResourceObject, Options, Reso
 import { caseTypes, changeCase } from './utils'
 
 type IncludedCache = Record<string, Record<string, unknown>>
+type IncludedMap = Record<string, Record<string, ExistingResourceObject>>
 
 /**
  * Deserialize a JSON:API response
@@ -18,17 +19,22 @@ export function deserialize<TEntity, TExtraOptions = unknown>(
   }
 
   const included = response.included || []
+  const includedMap: IncludedMap = {}
+  for (const include of included) {
+    includedMap[include.type] ??= {}
+    includedMap[include.type][include.id] = include
+  }
 
   return Array.isArray(response.data)
     ? response.data.map((data) => {
-        return parseJsonApiSimpleResourceData(data, included, options, false, {})
+        return parseJsonApiSimpleResourceData(data, includedMap, options, false, {})
       })
-    : parseJsonApiSimpleResourceData(response.data, included, options, false, {})
+    : parseJsonApiSimpleResourceData(response.data, includedMap, options, false, {})
 }
 
 function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
   data: ResourceObject,
-  included: ExistingResourceObject[],
+  includedMap: IncludedMap,
   options: Options<TExtraOptions>,
   useCache: boolean,
   includedCache: IncludedCache,
@@ -77,11 +83,11 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
 
       if (Array.isArray(relationReference.data)) {
         resource[casedRelationName] = relationReference.data.map((relationData) => {
-          return findJsonApiIncluded(included, includedCache, relationData.type, relationData.id, options)
+          return findJsonApiIncluded(includedMap, includedCache, relationData.type, relationData.id, options)
         })
       } else if (relationReference && relationReference.data) {
         const relationResource = findJsonApiIncluded<Record<string, unknown>, TExtraOptions>(
-          included,
+          includedMap,
           includedCache,
           relationReference.data.type,
           relationReference.data.id,
@@ -102,24 +108,24 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
 
 /**
  *
- * @param included
+ * @param includedMap
  * @param includedCache
  * @param type
  * @param id
  * @param options
  */
 function findJsonApiIncluded<TEntity, TExtraOptions>(
-  included: ExistingResourceObject[],
+  includedMap: IncludedMap,
   includedCache: IncludedCache,
   type: string,
   id: string,
   options: Options<TExtraOptions>,
 ): TEntity {
-  const foundResource = included.find((item) => item.type === type && item.id === id)
+  const foundResource = includedMap[type]?.[id]
 
   if (!foundResource) {
     return { id } as unknown as TEntity
   }
 
-  return parseJsonApiSimpleResourceData(foundResource, included, options, true, includedCache)
+  return parseJsonApiSimpleResourceData(foundResource, includedMap, options, true, includedCache)
 }
