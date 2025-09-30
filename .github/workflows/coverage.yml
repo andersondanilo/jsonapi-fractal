@@ -14,7 +14,7 @@ jobs:
       with:
         node-version: 16.x
     - run: npm config set timeout 600000
-    - run: npm install
+    - run: npm install --force
     - run: npm run build
     - uses: paambaati/codeclimate-action@v3.0.0
       env:
