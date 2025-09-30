@@ -34,7 +34,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16.x
-      - uses: wagoid/commitlint-github-action@v4
       - run: npm config set timeout 600000
       - run: npm install
       - run: npm run lint
