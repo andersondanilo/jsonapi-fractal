@@ -71,7 +71,6 @@ describe('serialize', () => {
     const serialized = serialize(undefined, 'users')
 
     expect(serialized).toStrictEqual({
-      // eslint-disable-next-line unicorn/no-null
       data: null,
     })
   })

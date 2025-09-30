@@ -12,8 +12,7 @@ jobs:
     - uses: actions/checkout@master
     - uses: actions/setup-node@master
       with:
-        node-version: 16.x
-    - run: npm config set timeout 600000
+        node-version: 22.x
     - run: npm install --force
     - run: npm run build
     - uses: paambaati/codeclimate-action@v3.0.0
