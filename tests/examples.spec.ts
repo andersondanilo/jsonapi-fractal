@@ -10,10 +10,8 @@ describe('examples', () => {
   const cases = [['simple-serialize'], ['deserialize'], ['serialize-with-transformers']]
 
   test.each(cases)('%s should return expected result', async (exampleName) => {
-    // eslint-disable-next-line unicorn/no-await-expression-member,unicorn/prefer-module
     const packageConfig = JSON.parse((await readFile(`${__dirname}/../package.json`)).toString())
 
-    // eslint-disable-next-line unicorn/no-await-expression-member,unicorn/prefer-module
     const scriptText = (await readFile(`${__dirname}/../examples/${exampleName}.js`)).toString()
 
     let resultComment = ''

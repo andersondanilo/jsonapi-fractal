@@ -10,7 +10,7 @@ describe('ContextBuilder', () => {
             ({
               name: 'test',
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            } as any),
+            }) as any,
         ).toContext()
       }).toThrow(JsonApiFractalError)
     })

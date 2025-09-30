@@ -12,7 +12,7 @@ jobs:
     if: ${{ !contains(github.event.head_commit.message, 'skip ci') }}
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x, 20.x, 22.x, 24.x]
     name: test/node ${{ matrix.node-version }}
     steps:
       - uses: actions/checkout@v2
@@ -33,7 +33,6 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v2
         with:
-          node-version: 16.x
-      - run: npm config set timeout 600000
-      - run: npm install
+          node-version: 22.x
+      - run: npm install --force
       - run: npm run lint

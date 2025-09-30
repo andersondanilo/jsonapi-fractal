@@ -48,7 +48,6 @@ export function serialize<TEntity, TExtraOptions = unknown>(
 
 function serializeContext<TEntity, TExtraOptions = unknown>(context: Context<TEntity, TExtraOptions>): DocumentObject {
   if (!context.input) {
-    // eslint-disable-next-line unicorn/no-null
     return { data: null }
   }
 
