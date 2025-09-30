@@ -1,3 +1,9 @@
+## [2.3.2](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.3.1...v2.3.2) (2025-09-30)
+
+### Bug Fixes
+
+* Improve join time of included fields by using a map instead of a Array.find ([#246](https://github.com/andersondanilo/jsonapi-fractal/issues/246)) ([6b2aabb](https://github.com/andersondanilo/jsonapi-fractal/commit/6b2aabbb2baf9dadbf7dd7cbb159e81649082eea))
+
 ### [2.3.1](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.3.0...v2.3.1) (2023-02-09)
 
 
