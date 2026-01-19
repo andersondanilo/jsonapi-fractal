@@ -50,6 +50,8 @@ export enum CaseType {
 export type Options<TExtraOptions = void> = {
   /** key that should be used as the id */
   idKey?: string
+  /** key that should be used to store the resource type in deserialized objects */
+  typeKey?: string
   /** map of EntityType => Fields Array, e.g. `{"users": ["name", "age"], "images": ["width"]}` */
   fields?: Record<string, string[]>
   /** change case of the attribute keys */

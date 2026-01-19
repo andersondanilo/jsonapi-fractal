@@ -82,10 +82,24 @@ function serializeEntity<TEntity, TExtraOptions>(
 ): ResourceObject | NewResourceObject {
   let attributes = { ...transformer.transform(entity, options) }
   const idKey = options.idKey || 'id'
+  const typeKey = options.typeKey
   const id: string | undefined =
     (attributes[idKey] as string) || (entity as unknown as Record<string, string>)[idKey] || undefined
 
+  if (typeKey) {
+    if (idKey === typeKey) {
+      throw new JsonApiFractalError('idKey and typeKey must be different')
+    }
+    const typeFromEntity = (entity as unknown as Record<string, string>)[typeKey]
+    if (typeFromEntity && typeFromEntity !== transformer.type) {
+      throw new JsonApiFractalError(`typeKey value "${typeFromEntity}" does not match type "${transformer.type}"`)
+    }
+  }
+
   delete attributes[idKey]
+  if (typeKey) {
+    delete attributes[typeKey]
+  }
 
   const relationships: Record<string, RelationshipObject> = {}
 

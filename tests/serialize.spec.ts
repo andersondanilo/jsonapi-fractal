@@ -220,4 +220,68 @@ describe('serialize', () => {
       ],
     })
   })
+
+  describe('typeKey option', () => {
+    it('should exclude typeKey attribute from serialized output', () => {
+      const entity = {
+        id: '1',
+        type: 'users',
+        firstName: 'Joe',
+        lastName: 'Doe',
+      }
+
+      const serialized = serialize(entity, 'users', { typeKey: 'type' })
+
+      expect(serialized).toStrictEqual({
+        data: {
+          id: '1',
+          type: 'users',
+          attributes: {
+            firstName: 'Joe',
+            lastName: 'Doe',
+          },
+        },
+      })
+    })
+
+    it('should throw error when idKey and typeKey are the same', () => {
+      const entity = { id: '1', firstName: 'Joe' }
+
+      expect(() => serialize(entity, 'users', { idKey: 'id', typeKey: 'id' })).toThrow(
+        'idKey and typeKey must be different',
+      )
+    })
+
+    it('should throw error when typeKey value does not match type', () => {
+      const entity = {
+        id: '1',
+        resourceType: 'posts',
+        firstName: 'Joe',
+      }
+
+      expect(() => serialize(entity, 'users', { typeKey: 'resourceType' })).toThrow(
+        'typeKey value "posts" does not match type "users"',
+      )
+    })
+
+    it('should allow typeKey value matching the type', () => {
+      const entity = {
+        id: '1',
+        resourceType: 'users',
+        firstName: 'Joe',
+      }
+
+      const serialized = serialize(entity, 'users', { typeKey: 'resourceType' })
+
+      expect(serialized).toStrictEqual({
+        data: {
+          id: '1',
+          type: 'users',
+          attributes: {
+            firstName: 'Joe',
+          },
+        },
+      })
+    })
+  })
 })

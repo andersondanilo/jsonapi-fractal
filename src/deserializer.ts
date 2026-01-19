@@ -56,6 +56,7 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
   }
 
   const resource: Record<string, unknown> = {
+    ...(options.typeKey ? { [options.typeKey]: data.type } : {}),
     ...(id ? { id } : {}),
     ...attributes,
   }
@@ -124,7 +125,10 @@ function findJsonApiIncluded<TEntity, TExtraOptions>(
   const foundResource = includedMap[type]?.[id]
 
   if (!foundResource) {
-    return { id } as unknown as TEntity
+    return {
+      ...(options.typeKey ? { [options.typeKey]: type } : {}),
+      id,
+    } as unknown as TEntity
   }
 
   return parseJsonApiSimpleResourceData(foundResource, includedMap, options, true, includedCache)

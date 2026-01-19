@@ -1,4 +1,4 @@
-import { deserialize, DocumentObject } from '../src'
+import { deserialize, DocumentObject, ExistingDocumentObject } from '../src'
 import { CaseType } from '../src/types'
 
 describe('deserialize', () => {
@@ -162,5 +162,107 @@ describe('deserialize', () => {
         },
       },
     ])
+  })
+
+  describe('typeKey option', () => {
+    it('should include type in deserialized output when typeKey is specified', () => {
+      const serialized: ExistingDocumentObject = {
+        data: {
+          type: 'users',
+          id: '1',
+          attributes: {
+            firstName: 'Joe',
+            lastName: 'Doe',
+          },
+        },
+      }
+
+      expect(deserialize(serialized, { typeKey: 'type' })).toStrictEqual({
+        type: 'users',
+        id: '1',
+        firstName: 'Joe',
+        lastName: 'Doe',
+      })
+    })
+
+    it('should include type in array of deserialized objects', () => {
+      const serialized: ExistingDocumentObject = {
+        data: [
+          {
+            type: 'users',
+            id: '1',
+            attributes: { firstName: 'Joe' },
+          },
+          {
+            type: 'users',
+            id: '2',
+            attributes: { firstName: 'Jane' },
+          },
+        ],
+      }
+
+      expect(deserialize(serialized, { typeKey: '_type' })).toStrictEqual([
+        { _type: 'users', id: '1', firstName: 'Joe' },
+        { _type: 'users', id: '2', firstName: 'Jane' },
+      ])
+    })
+
+    it('should include type in relationships when typeKey is specified', () => {
+      const serialized: DocumentObject = {
+        data: {
+          type: 'users',
+          id: '1',
+          attributes: { firstName: 'Joe' },
+          relationships: {
+            address: {
+              data: { type: 'addresses', id: 'addr-1' },
+            },
+          },
+        },
+        included: [
+          {
+            type: 'addresses',
+            id: 'addr-1',
+            attributes: { street: 'Main St' },
+          },
+        ],
+      }
+
+      expect(deserialize(serialized, { typeKey: 'resourceType' })).toStrictEqual({
+        resourceType: 'users',
+        id: '1',
+        firstName: 'Joe',
+        address: {
+          resourceType: 'addresses',
+          id: 'addr-1',
+          street: 'Main St',
+        },
+      })
+    })
+
+    it('should include type for relationships not in included array', () => {
+      const serialized: DocumentObject = {
+        data: {
+          type: 'users',
+          id: '1',
+          attributes: { firstName: 'Joe' },
+          relationships: {
+            address: {
+              data: { type: 'addresses', id: 'addr-1' },
+            },
+          },
+        },
+      }
+
+      expect(deserialize(serialized, { typeKey: 'type' })).toStrictEqual({
+        type: 'users',
+        id: '1',
+        firstName: 'Joe',
+        address: {
+          type: 'addresses',
+          id: 'addr-1',
+        },
+      })
+    })
   })
 })
