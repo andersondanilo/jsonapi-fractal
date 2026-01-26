@@ -48,7 +48,7 @@
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.6.0",
+    "@types/node": "^25.0.10",
     "@typescript-eslint/eslint-plugin": "^8.45.0",
     "@typescript-eslint/parser": "^8.45.0",
     "acorn": "^8.15.0",
