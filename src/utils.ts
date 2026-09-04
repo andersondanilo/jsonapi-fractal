@@ -1,7 +1,9 @@
 import { camelCase, snakeCase, paramCase, camelCaseTransformMerge } from 'change-case'
-import { AttributesObject, CaseType, JsonObject } from './types'
+import { AttributesObject, CaseType, JsonObject, KeyTransformPolicy } from './types'
 
 type CaseFunction = (input: string) => string
+type PolicyKeyCase = 'input' | 'output'
+
 export const caseTypes: Record<CaseType, CaseFunction> = {
   [CaseType.camelCase]: (input: string) => camelCase(input, { transform: camelCaseTransformMerge }),
   [CaseType.snakeCase]: snakeCase,
@@ -14,8 +16,20 @@ export const caseTypes: Record<CaseType, CaseFunction> = {
  * @param originalAttributes
  * @param caseType
  * @param deep
+ * @param keyTransformPolicy
+ * @param policyKeyCase whether policy keys match input or output casing
  */
-export function changeCase(originalAttributes: AttributesObject, caseType: CaseType, deep = false): AttributesObject {
+export function changeCase(
+  originalAttributes: AttributesObject,
+  caseType: CaseType,
+  deep = false,
+  keyTransformPolicy?: KeyTransformPolicy,
+  policyKeyCase: PolicyKeyCase = 'input',
+): AttributesObject {
+  if (keyTransformPolicy === 'preserve') {
+    return originalAttributes
+  }
+
   const caseFunction = caseTypes[caseType]
 
   if (!caseFunction) {
@@ -25,17 +39,31 @@ export function changeCase(originalAttributes: AttributesObject, caseType: CaseT
   const parsedAttributes: AttributesObject = {}
 
   for (const key of Object.keys(originalAttributes)) {
+    const transformedKey = caseFunction(key)
+    const policyKey = policyKeyCase === 'input' ? key : transformedKey
+    const knownKeys = keyTransformPolicy?.knownKeys
+    const hasKnownKey = !!knownKeys && Object.prototype.hasOwnProperty.call(knownKeys, policyKey)
+    const unknownKeys = keyTransformPolicy?.unknownKeys
+    const preserveUnknownKey = !hasKnownKey && unknownKeys !== undefined
+    const nestedPolicy = hasKnownKey ? knownKeys[policyKey] : unknownKeys?.valuePolicy
     let value = originalAttributes[key]
 
     if (deep && value) {
       if (Array.isArray(value)) {
-        value = value.map((value) => (isObject(value) ? changeCase(value as JsonObject, caseType, deep) : value))
+        value = value.map((value) =>
+          isObject(value) ? changeCase(value as JsonObject, caseType, deep, nestedPolicy, policyKeyCase) : value,
+        )
       } else if (isObject(value)) {
-        value = changeCase(value as JsonObject, caseType, deep)
+        value = changeCase(value as JsonObject, caseType, deep, nestedPolicy, policyKeyCase)
       }
     }
 
-    parsedAttributes[caseFunction(key)] = value
+    Object.defineProperty(parsedAttributes, preserveUnknownKey ? key : transformedKey, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   }
 
   return parsedAttributes
