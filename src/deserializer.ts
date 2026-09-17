@@ -52,7 +52,8 @@ function parseJsonApiSimpleResourceData<TEntity, TExtraOptions>(
   let attributes: AttributesObject = data.attributes || {}
 
   if (options.changeCase) {
-    attributes = changeCase(attributes, options.changeCase, options.changeCaseDeep)
+    const keyTransformPolicy = options.keyTransformPoliciesByResourceType?.[data.type]
+    attributes = changeCase(attributes, options.changeCase, options.changeCaseDeep, keyTransformPolicy, 'input')
   }
 
   const resource: Record<string, unknown> = {

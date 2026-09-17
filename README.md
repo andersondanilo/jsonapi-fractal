@@ -104,6 +104,33 @@ console.log(JSON.stringify(entity))
 
 ```
 
+## Preserve dynamic keys during case conversion
+
+When using deep case conversion, a key transform policy can preserve runtime-defined map keys while declared fields continue
+to be converted:
+
+```js
+const entity = deserialize(serializedData, {
+  changeCase: CaseType.camelCase,
+  changeCaseDeep: true,
+  keyTransformPoliciesByResourceType: {
+    users: {
+      knownKeys: {
+        metadata: {
+          unknownKeys: {
+            valuePolicy: 'preserve',
+          },
+        },
+      },
+    },
+  },
+})
+```
+
+Policies are selected by JSON:API `data.type`. Known key names use their serialized casing. An `unknownKeys` rule
+preserves unmatched key names and applies its optional `valuePolicy` to each value; without a `valuePolicy`, values
+continue through normal deep conversion. The `'preserve'` policy leaves an entire subtree unchanged.
+
 ## Serialize with transformers
 ```js
 // examples/serialize-with-transformers.js

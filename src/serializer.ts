@@ -121,7 +121,8 @@ function serializeEntity<TEntity, TExtraOptions>(
   }
 
   if (options.changeCase) {
-    attributes = changeCase(attributes, options.changeCase, options.changeCaseDeep)
+    const keyTransformPolicy = options.keyTransformPoliciesByResourceType?.[transformer.type]
+    attributes = changeCase(attributes, options.changeCase, options.changeCaseDeep, keyTransformPolicy, 'output')
   }
 
   const data: Omit<ResourceObject, 'id'> & { id?: string } = {

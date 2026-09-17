@@ -220,4 +220,50 @@ describe('serialize', () => {
       ],
     })
   })
+
+  it('should selectively preserve dynamic keys by resource type', () => {
+    const serialized = serialize(
+      {
+        id: '1',
+        createdAt: '2026-09-04',
+        metadata: {
+          knownField: { nestedField: 'transformed' },
+          'X-Header': { Header_Value: 'unchanged' },
+        },
+      },
+      'users',
+      {
+        changeCase: CaseType.snakeCase,
+        changeCaseDeep: true,
+        keyTransformPoliciesByResourceType: {
+          users: {
+            knownKeys: {
+              metadata: {
+                knownKeys: {
+                  known_field: {},
+                },
+                unknownKeys: {
+                  valuePolicy: 'preserve',
+                },
+              },
+            },
+          },
+        },
+      },
+    )
+
+    expect(serialized).toStrictEqual({
+      data: {
+        id: '1',
+        type: 'users',
+        attributes: {
+          created_at: '2026-09-04',
+          metadata: {
+            known_field: { nested_field: 'transformed' },
+            'X-Header': { Header_Value: 'unchanged' },
+          },
+        },
+      },
+    })
+  })
 })

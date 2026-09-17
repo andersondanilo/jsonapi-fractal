@@ -47,6 +47,22 @@ export enum CaseType {
   kebabCase = 'kebabCase',
 }
 
+/**
+ * Selective rules for deep key case conversion.
+ *
+ * Known key names use their serialized casing. `'preserve'` leaves an entire subtree unchanged.
+ */
+export type KeyTransformPolicy =
+  | 'preserve'
+  | {
+      /** serialized key names with policies for their values */
+      knownKeys?: Record<string, KeyTransformPolicy>
+      /** when present, preserve unmatched key names and optionally apply a policy to their values */
+      unknownKeys?: {
+        valuePolicy?: KeyTransformPolicy
+      }
+    }
+
 export type Options<TExtraOptions = void> = {
   /** key that should be used as the id */
   idKey?: string
@@ -56,6 +72,8 @@ export type Options<TExtraOptions = void> = {
   changeCase?: CaseType
   /** if true, also apply the change for sub objects */
   changeCaseDeep?: boolean
+  /** key transformation rules keyed by JSON:API `data.type` */
+  keyTransformPoliciesByResourceType?: Record<string, KeyTransformPolicy>
   /** custom properties, that are available in the transformer */
   extra?: TExtraOptions
 }
