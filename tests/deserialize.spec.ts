@@ -163,4 +163,109 @@ describe('deserialize', () => {
       },
     ])
   })
+
+  it('should selectively preserve dynamic keys by resource type', () => {
+    const serialized: DocumentObject = {
+      data: {
+        type: 'users',
+        id: '1',
+        attributes: {
+          created_at: '2026-09-04',
+          metadata: {
+            known_field: { nested_field: 'transformed' },
+            'X-Header': { Header_Value: 'unchanged' },
+          },
+        },
+      },
+    }
+
+    expect(
+      deserialize(serialized, {
+        changeCase: CaseType.camelCase,
+        changeCaseDeep: true,
+        keyTransformPoliciesByResourceType: {
+          users: {
+            knownKeys: {
+              metadata: {
+                knownKeys: {
+                  known_field: {},
+                },
+                unknownKeys: {
+                  valuePolicy: 'preserve',
+                },
+              },
+            },
+          },
+        },
+      }),
+    ).toStrictEqual({
+      id: '1',
+      createdAt: '2026-09-04',
+      metadata: {
+        knownField: { nestedField: 'transformed' },
+        'X-Header': { Header_Value: 'unchanged' },
+      },
+    })
+  })
+
+  it('should select a policy for each included resource type', () => {
+    const serialized: DocumentObject = {
+      data: {
+        type: 'users',
+        id: '1',
+        attributes: {},
+        relationships: {
+          profile: {
+            data: {
+              type: 'profiles',
+              id: 'profile-1',
+            },
+          },
+        },
+      },
+      included: [
+        {
+          type: 'profiles',
+          id: 'profile-1',
+          attributes: {
+            display_name: 'Primary',
+            metadata: {
+              'X-Header': {
+                Header_Value: 'unchanged',
+              },
+            },
+          },
+        },
+      ],
+    }
+
+    expect(
+      deserialize(serialized, {
+        changeCase: CaseType.camelCase,
+        changeCaseDeep: true,
+        keyTransformPoliciesByResourceType: {
+          profiles: {
+            knownKeys: {
+              metadata: {
+                unknownKeys: {
+                  valuePolicy: 'preserve',
+                },
+              },
+            },
+          },
+        },
+      }),
+    ).toStrictEqual({
+      id: '1',
+      profile: {
+        id: 'profile-1',
+        displayName: 'Primary',
+        metadata: {
+          'X-Header': {
+            Header_Value: 'unchanged',
+          },
+        },
+      },
+    })
+  })
 })
