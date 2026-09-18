@@ -1,3 +1,9 @@
+## [2.4.1](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.4.0...v2.4.1) (2026-09-18)
+
+### Bug Fixes
+
+* release ([305cccf](https://github.com/andersondanilo/jsonapi-fractal/commit/305cccfdd3da75bf1c71fcdbe97c20392a73f69a))
+
 ## [2.4.0](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.3.2...v2.4.0) (2026-09-18)
 
 ### Features
