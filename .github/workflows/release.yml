@@ -23,6 +23,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 22.x
+      - run: npm install -g npm@latest
       - run: npm install --force
       - run: npm run build
       - name: release
