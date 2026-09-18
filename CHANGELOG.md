@@ -1,3 +1,14 @@
+## [2.4.0](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.3.2...v2.4.0) (2026-09-18)
+
+### Features
+
+* add selective key transform policies ([#284](https://github.com/andersondanilo/jsonapi-fractal/issues/284)) ([56c2cd6](https://github.com/andersondanilo/jsonapi-fractal/commit/56c2cd6f78acf9eab95cfd8e161f49075a4a7611))
+
+### Bug Fixes
+
+* ci linter ([e97411d](https://github.com/andersondanilo/jsonapi-fractal/commit/e97411d9dfe57091325962d03aa6163968d8db24))
+* release ([4181af0](https://github.com/andersondanilo/jsonapi-fractal/commit/4181af03dfc752c1ee0754b9537c9c371bbd690d))
+
 ## [2.3.2](https://github.com/andersondanilo/jsonapi-fractal/compare/v2.3.1...v2.3.2) (2025-09-30)
 
 ### Bug Fixes
