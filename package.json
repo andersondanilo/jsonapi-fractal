@@ -54,7 +54,7 @@
     "@typescript-eslint/eslint-plugin": "^8.45.0",
     "@typescript-eslint/parser": "^8.45.0",
     "acorn": "^8.15.0",
-    "conventional-changelog-conventionalcommits": "^9.1.0",
+    "conventional-changelog-conventionalcommits": "^10.4.1",
     "embedme": "^1.22.1",
     "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
